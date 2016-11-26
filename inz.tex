@@ -103,10 +103,36 @@ Kolejną możliwością jest skorzystanie z aplikacji desktopowej. Nie ma ich wi
 
 \section{Zastosowane technologie}
 \label{Sec:DataTech}
-python
-pyodbc
+Moduł odpowiadający za pobieranie danych z bazy, a następnie ich przetworzenie został zaimplementowany w języku Python. Python to wysokopoziomowy język skryptowy, który charakteryzuje się rozbudowanym zestawem wbudowanych bibliotek, oraz łatwością instalacji i mnogością modułów zewnętrznych.
+Baza danych programu \textit{OnCourt} jest zapisywana z rozszerzeniem \textit{.mdb} - plik bazodanowy programu Microsoft Access. Do połączenia z bazą danych wykorzystano zewnętrzny moduł \textit{pyodbc}. Moduł ten pozwala na połączenie z bazami danych ODBC\footnote{Open DataBase Connectivity - interfejs umożliwiający aplikacjom dostęp do danych w bazie}. Aby było możliwe połączenie z bazą Microsoft Access, należy posiadać zainstalowane sterowniki \textit{Microsoft Access Driver (*.mdb, *.accdb)}, które dostępne są tylko dla systemu operacyjnego Windows. Po odpowiednim podłączeniu do bazy danych można wykonywać dowolne zapytania w języku SQL, a wyniki otrzymywać i przetwarzać w swoim programie.
+
 \section{Wykorzystane statystyki}
 \label{Sec:DataUsed}
+Poniżej przedstawiono wszystkie dane statystyczne wykorzystane w projekcie, ich oznaczenia wykorzystywane w dalszej części pracy, oraz krótkie uzasadnienie wyboru i sposób ich uzyskiwania:
+\begin{enumerate}
+\item WRS - Stosunek wygranych meczów do wszystkich meczów rozegranych przez zawodnika w bieżącym sezonie.
+
+Ogólna dyspozycja zawodnika w obecnym sezonie.
+
+$WRS = \frac{Wygrane\ mecze\ zawodnika\ w\ obecnym\ sezonie}{Wszystkie\ mecze\ zawodnika\ w\ obecnym\ sezonie}$
+\item WR2M - Stosunek wygranych meczów do wszystkich meczów rozegranych przez zawodnika w ciągu ostatnich dwóch miesięcy.
+
+Ogólna dyspozycja zawodnika w ciągu ostatnich dwóch miesięcy.
+
+$WR2M = \frac{Wygrane\ mecze\ zawodnika\ ostatnie\ 2\ mies.}{Wszystkie\ mecze\ zawodnika\ ostatnie\ 2\ mies.}$
+
+\item R - Ranking zawodnika.
+
+Ogólna dyspozycja zawodnika w obecnym sezonie.
+
+$R = \frac{Ranking\ zawodnika}{900}$
+
+\item WRCT - Stosunek wygranych meczów do wszystkich meczów rozegranych przez zawodnika na korcie danego typu.
+
+tmpppp
+
+$R = \frac{Ranking\ zawodnika}{900}$
+\end{enumerate}
 
 \chapter{Implementacja sieci neuronowej}
 \section{Uniwersalny moduł MLP}
