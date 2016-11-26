@@ -6,17 +6,19 @@
 
 \chapter{Streszczenie}
 
+
 \chapter{Wstęp}
 
 \section{Tenis}
-Tenis ziemny to olimpijski sport rakietowy rozgrywany pojedynczo (singiel), w dwuosobowych zespołach jednej płci (debel) lub obu płci (mikst). Gra w tenisa w formie jaką mamy dzisiaj wywodzi się z Birmingham w Anglii. Początki tego sportu datowane są na lata 60. XIX wieku. Najstarszy turniej na świecie, Wimbledon, pierwszy raz odbył się w roku 1877, a w latach 1896-1924 tenis był dyscypliną olimpijską. Na listę olimpiady został ponownie wpisany w roku 1988.
+\label{Sec:Tenis}
+Tenis ziemny to jedna z najbardziej popularnych dyscyplin sportowych na świecie. Mecze rozgrywane są pojedynczo (singiel), w dwuosobowych zespołach jednej płci (debel) lub obu płci (mikst). Gra w tenisa w formie jaką mamy dzisiaj wywodzi się z Birmingham w Anglii. Początki tego sportu datowane są na lata 60. XIX wieku. Najstarszy turniej na świecie, Wimbledon, pierwszy raz odbył się w roku 1877, a w latach 1896-1924 tenis był dyscypliną olimpijską. Na listę olimpiady został ponownie wpisany w roku 1988.\cite{tenis01}
 
-Dzisiaj tenis to jedna z najbardziej popularnych dyscyplin sportowych na świecie. W meczu tenisa może wziąć udział każdy, kto jest w stanie trzymać rakietę. Dzięki temu ilość graczy rekreacyjnych można liczyć w milionach. Tenis jest sportem widowiskowym, dlatego zmagania profesjonalistów dostarczają wielu wrażeń i gromadzą liczną widownię. Najbardziej prestiżowymi turniejami w sezonie są cztery turnieje wielkoszlemowe: Australian Open, French Open (znany również jako Roland Garros), Wimbledon oraz US Open. Kolejną rangą turniejów w tenisie męskim są turnieje z cyklu ATP World Tour: ATP World Tour Masters 1000 (cykl dziewięciu turniejów), ATP World Tour 500 i ATP World Tour 250. 
+W meczu tenisa może wziąć udział każdy, kto jest w stanie trzymać rakietę. Dzięki temu ilość graczy rekreacyjnych można liczyć w milionach. Tenis jest sportem widowiskowym, dlatego zmagania profesjonalistów dostarczają wielu wrażeń i gromadzą liczną widownię. Najbardziej prestiżowymi turniejami w sezonie są cztery turnieje wielkoszlemowe: Australian Open, French Open (znany również jako Roland Garros), Wimbledon oraz US Open. Kolejną rangą turniejów w tenisie męskim są turnieje z cyklu ATP World Tour: ATP World Tour Masters 1000 (cykl dziewięciu turniejów), ATP World Tour 500 i ATP World Tour 250.\cite{tenis02}
 
 \begin{table}[H]
 \centering
-\caption{Turnieje wielkoszlemowe}
-\label{my-label}
+\caption{Turnieje wielkoszlemowe\cite{tenis02}}
+\label{Tab:Slam}
 \begin{tabular}{|l|l|l|l|}
 \hline
 \textbf{Data}       & \textbf{Nazwa turnieju}     & \textbf{Miejsce rozgrywek} & \textbf{Nawierzchnia} \\ \hline
@@ -27,12 +29,13 @@ Sierpień - Wrzesień & US Open                     & Nowy Jork                 
 \end{tabular}
 \end{table}
 
-Ogromna liczba widzów przyciąga inwestorów, przez co dyscyplina ciągle się rozwija. Na przestrzeni lat ewoluowała zarówno sama dyscyplina, jak i wykorzystywany w niej sprzęt czy wyspecjalizowane metody treningowe. Zauważalny jest również bezpośredni wpływ rozwoju technologii, czego przykładem jest system Hawk-Eye pozwalający na rozstrzyganie kontrowersyjnych punktów dzięki analizie obrazu z kamer i sygnału z czujników.
+Ogromna liczba widzów przyciąga inwestorów, przez co dyscyplina stale się rozwija. Na przestrzeni lat ewoluowała zarówno sama dyscyplina, jak i wykorzystywany w niej sprzęt czy wyspecjalizowane metody treningowe. Zauważalny jest również bezpośredni wpływ rozwoju technologii, czego przykładem jest system Hawk-Eye pozwalający na rozstrzyganie kontrowersyjnych punktów dzięki analizie obrazu z kamer i sygnału z czujników.
 
 
 
 \section{Uczenie maszynowe}
-Uczenie maszynowe to dynamicznie rozwijająca się dziedzina nauki. Polega na takim zaprogramowaniu maszyny, aby podać jedynie algorytm dzięki któremu będzie ona w stanie nauczyć się rozwiązywać zadany problem na podstawie pewnych danych. Nie jest implementowany algorytm bezpośrednio rozwiązujący problem. 
+\label{Sec:Machine}
+Uczenie maszynowe to dynamicznie rozwijająca się dziedzina nauki. Polega na takim zaprogramowaniu maszyny, aby podać jedynie algorytm, dzięki któremu będzie ona w stanie nauczyć się rozwiązywać zadany problem na podstawie pewnych danych. Nie jest implementowany algorytm bezpośrednio rozwiązujący problem. 
 
 Przykładowe zastosowania uczenia maszynowego:
 \begin{itemize}
@@ -48,53 +51,100 @@ Przykładowe zastosowania uczenia maszynowego:
 Istnieje wiele metod uczenia maszynowego, każda z nich posiada swoje wady i zalety. Różne metody znajdują zastosowania w rozwiązywaniu różnych problemów. Niektóre ze znanych metod uczenia maszynowego to maszyna wektorów uczących, sieć bayesowska czy sieci neuronowe. 
 
 \section{Cel projektu}
+\label{Sec:Goal}
 Celem projektu było stworzenie sieci neuronowej, która przewidywać będzie zwycięzcę meczu tenisa ziemnego mężczyzn (ATP World Tour) na podstawie danych statystycznych dostępnych przed meczem. Zamierzano osiągnąć możliwie najlepsze wyniki, poprzez doświadczalne określenie wpływu architektury sieci oraz rodzaju danych wejściowych na jakość osiąganych rezultatów. Predykcje najlepiej spisującego się modelu będą publikowane na portalu społecznościowym Twitter.
 
 \section{Motywacja}
+\label{Sec:Motiv}
 Powodem wyboru tematu była chęć zastosowania uczenia maszynowego w sporcie, gdzie analiza wielkiej ilości danych statystycznych zaczyna odgrywać coraz większą rolę. Bardzo prawdopodobnym jest, że w niedalekiej przyszłości czołowi zawodnicy wielu dyscyplin sportowych polegać będą właśnie na analizie danych. Znajdowanie słabych punktów przeciwnika oraz dobór odpowiedniej taktyki w starciu z nim, wybór optymalnego planu treningowego, pomoc w podejmowaniu decyzji o transferach czy tytułowa predykcja wyników meczów to tylko kilka z możliwych zastosowań.  Powstawały już prace o podobnej tematyce, jednak takie wykorzystanie uczenia maszynowego nadal nie jest jednym ze sztandarowych zastosowań. Z punktu widzenia kibica tenisa ziemnego, predykcja wyników meczów to bardzo atrakcyjny temat, a zainteresowanie tematyką uczenia maszynowego i chęć rozwoju w tym kierunku ostatecznie zadecydowały o wyborze tematu projektu.
 
 
 \chapter{Sieci neuronowe}
 \section{Wprowadzenie}
+\label{Sec:ThIntro}
+
 \section{Neuron sigmoidalny}
+\label{Sec:ThSig}
+
 \section{Struktura wielowarstwowej sieci perceptronowej}
+\label{Sec:ThMLP}
+
 \section{Propagacja wsteczna}
+\label{Sec:ThBackprop}
+
 \section{Algorytm największego spadku gradientu}
+\label{Sec:ThGrad}
 
 \chapter{Przygotowanie danych statystycznych}
-Posiadanie odpowiedniej ilości należycie przygotowanych danych to warunek niezbędny do przeprowadzenia procesu uczenia sieci, a w rezultacie powodzenia całego eksperymentu. Zgromadzenie i odpowiednie przetworzenie danych jest często najbardziej skomplikowaną i najbardziej czasochłonną częścią projektu wykorzystującego sieci neuronowe. 
+Posiadanie odpowiedniej ilości należycie przygotowanych danych to warunek niezbędny do przeprowadzenia procesu uczenia sztucznej sieci neuronowej, a w rezultacie powodzenia całego eksperymentu. Zgromadzenie i odpowiednie przetworzenie danych jest często najbardziej skomplikowaną i najbardziej czasochłonną częścią całego projektu. 
 
-W trakcie przygotowywania danych można napotkać wiele problemów:
+W trakcie poszukiwania i przygotowywania danych można napotkać wiele problemów:
 \begin{itemize}
 \item Brak dostępnych danych lub ich zbyt mała liczba
-\item Utrudniony dostęp do danych
 \item Dane nieaktualne
-
+\item Różne formaty/postacie danych, konieczność ujednolicenia
+\item Dane niskiej jakości, wybrakowane lub zniekształcone
 \end{itemize}
 
+Jakość danych ma znaczny wpływ na jakość wyników analizy, dlatego cały proces przygotowania danych powinien zostać przeprowadzony ze szczególną starannością. Przygotowanie danych może składać się z kilku zadań: wyboru odpowiednich danych, integracji danych pochodzących z różnych źródeł, transformacji danych do pożądanego formatu, odrzucenia nieistotnych/zniekształconych danych. Etap ten jest tak istotny, że w zadaniach analizy danych może zajmować nawet 50-70\% czasu trwania całego projektu.\cite{satt01}
+
 \section{Baza danych}
-oncourt
+\label{Sec:DataBase}
+Istnieje wiele serwisów internetowych zajmujących się kolekcjonowaniem statystyk tenisa ziemnego. Korzystanie z takich danych nie jest jednak wygodne z perspektywy programisty - serwisy zazwyczaj nie udostępniają publicznego interfejsu, więc pobieranie danych wiązałoby się z wydobywaniem ich bezpośrednio ze stron WWW (ang. \textit{web scraping}). Mogłoby to w wielu przypadkach naruszać również warunki korzystania z tych serwisów.
+
+Poszukując odpowiedniego zbioru danych można trafić na bazy meczów w formacie CSV (ang. \textit{comma-separated values}, wartości rozdzielone przecinkiem). Są one często dystrybuowane na licencjach otwartych, pozwalających na dowolne ich wykorzystywanie. Format CSV jest atrakcyjny dla programisty, bardzo wygodny w użyciu. Niestety dane w takich bazach bywają wybrakowane lub uszkodzone. Początkowo próbowano wykorzystać jedną z takich baz\footnote{Darmowa baza danych rozpowszechniana na licencji \textit{Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License}, dostępna pod adresem: \url{https://github.com/JeffSackmann/tennis_atp}}, jednak napotkano pewne problemy. Baza nie była aktualizowana od lutego 2016 roku, a pewne dane były uszkodzone - numery identyfikacyjne graczy niekiedy się powtarzały. Uniemożliwiło to wykorzystanie jej w projekcie.
+
+Kolejną możliwością jest skorzystanie z aplikacji desktopowej. Nie ma ich wiele, większość takich aplikacji nie jest już wspierana. Jednym z ciągle utrzymywanych programów, który wykorzystano w niniejszej pracy jest \textit{OnCourt}. Jego baza danych jest codziennie aktualizowana. Sam program umożliwia przeglądanie wielu statystyk - wszystkie mecze wybranego zawodnika, gry na danej nawierzchni czy w wybranych turniejach, obecna i historyczne pozycje w rankingu, stosunek head-to-head\footnote{Bezpośrednie konfrontacje pomiędzy dwoma wybranymi zawodnikami.} i wiele innych. Baza danych i ilość możliwości jest naprawdę ogromna, jednak wszystko to dostępne jest z poziomu graficznego interfejsu użytkownika, co znacznie utrudnia wygodne korzystanie z tego rozwiązania. Po nawiązaniu kontaktu z firmą KAN-soft, producentem oprogramowania \textit{OnCourt}, otrzymano hasło do lokalnej bazy danych pobieranej przez program, co umożliwiło wysyłanie własnych zapytań do bazy danych.
+\begin{figure}
+\caption{TMP}
+\includegraphics[width=\textwidth]{seal.jpg}
+\label{fig:seal}
+\end{figure}
+
 \section{Zastosowane technologie}
+\label{Sec:DataTech}
 python
 pyodbc
 \section{Wykorzystane statystyki}
+\label{Sec:DataUsed}
 
 \chapter{Implementacja sieci neuronowej}
 \section{Uniwersalny moduł MLP}
+\label{Sec:MLPMod}
+
 \section{Zastosowane technologie}
+\label{Sec:MLPTech}
+
 \section{Struktura programu}
+\label{Sec:MLPStruct}
+
 \section{Interfejs programisty}
+\label{Sec:MLPAPI}
 
 \chapter{Przeprowadzone doświadczenia}
 \section{Porównanie wyników dla różnych architektur sieci}
+\label{Sec:VsArch}
+
 \section{Porównanie wyników dla różnych wektorów danych wejściowych}
+\label{Sec:VsXIn}
+
 \section{Porównanie z innymi strategiami}
+\label{Sec:VsStrat}
 
 \chapter{Program publikujący przewidywania sieci neuronowej na portalu społecznościowym}
+
 \section{Zastosowane technologie}
+\label{Sec:BotTech}
+
 \section{Predykcje przedmeczowe}
+\label{Sec:PredykcjePrzed}
+
 \section{Predykcje w trakcie meczu}
+\label{Sec:PredykcjeLive}
 
 \chapter{Podsumowanie}
+
+\bibliography{./bibliography}
+\bibliographystyle{plain}
 
 \end{document}
