@@ -181,19 +181,59 @@ Moduł MLP zaimplementowano wykorzystując język Python. Do wykonywania oblicze
 Moduł MLP składa się z jednej klasy reprezentującej całą sieć neuronową - MLP. Zdecydowano o takiej konstrukcji, ponieważ wagi sieci przechowywane są w tablicach numpy.ndarray. Przejście sygnału przez sieć sprowadza się do wykonywania odpowiednich działań na macierzach. Utworzenie oddzielnej klasy odpowiadającej za Neuron i stworzenie sieci z obiektów klasy Neuron, skutkowałoby koniecznością wywoływania odpowiednich funkcji klasy Neuron dla każdego obiektu. Znacznie spowolniłoby to działanie całego programu. Diagram UML klasy MLP przedstawiono na rysunku \ref{fig:mlp01}.
 
 \begin{figure}
-\begin{center}
-\includegraphics[width=0.9\textwidth]{mlp01.png}
-\end{center}
+\includegraphics[width=\textwidth]{mlp01.png}
 \caption{Diagram UML klasy MLP}
 \label{fig:mlp01}
 \end{figure}
 
+\pagebreak
+
 \section{Interfejs programisty}
 \label{Sec:MLPAPI}
-z uzytkowego punktu widzenia:
-- konstruktor - trzeba podac strukture w formie listy, reszta moze byc domyslna
-- pozostale parametry: funkcja kosztów (domyslnie blad srednipokwadratowy?), funkcja aktywacji (domyslnie logistyczna), funkcja aktywacji pochodna, wspolczynnik uczenia, wspolczynnik momentu
 
+Aby skorzystać z klasy MLP wystarczy znajomość jedynie kilku metod. Proces korzystania z modułu MLP można podzielić na trzy etapy:
+\begin{enumerate}
+\item Stworzenie sieci o wybranej architekturze
+
+Do stworzenia sieci o wybranej architekturze należy wykorzystać konstruktor klasy MLP. Jedynym niezbędnym parametrem jest pożądana struktura sieci, podawana w formie listy całkowitych liczb dodatnich, np. $[2, 3, 1]$ - sieć o dwóch wejściach, 3 neuronach w warstwie ukrytej i jednym neuronie wyjściowym. Pozostałe, opcjonalne parametry wraz z wartościami domyślnymi:
+
+\begin{itemize}
+\item cost\_fun (funkcja) - funkcja kosztu służąca do obliczenia wartości błędu. Domyślnie jest to błąd kwadratowy przemnożony przez 0.5.
+\item activation\_fun (funkcja) - funkcja aktywacji. Domyślnie funkcja logistyczna - sigmoidalna funkcja unipolarna.
+\item activation\_fun\_d (funkcja) - pochodna funkcji aktywacji. Domyślnie pochodna unipolarnej funkcji sigmoidalnej.
+\item learn\_coef (float) - współczynnik uczenia. Wartość domyślna: 0.2.
+\item mom\_coef (float) - współczynnik momentu. Wartość domyślna: 0.1
+\end{itemize}
+
+\item Przeprowadzenie procesu uczenia
+
+Gdy obiekt klasy MLP jest już stworzony, można rozpocząć proces uczenia sieci. Ogranicza się to do wywołania metody start\_training. Niezbędnymi parametrami są zbiory danych: X\_train (wejściowe dane uczące), Y\_train (pożądane wyjścia odpowiadające danym podanym jako argument X\_train), X\_test (wejściowe dane testowe), Y\_test (pożądane wyjścia odpowiadające danym podanym jako argument X\_train). Opcjonalne parametry to epochs (maksymalna liczba epok\footnote{Epoka w procesie uczenia sieci neuronowych to przetworzenie całego ciągu danych uczących.}) i tolerance (gdy średni błąd spadnie poniżej tej wartości nastąpi zakończenie procesu uczenia).
+
+\item Wykorzystywanie nauczonej sieci
+W celu otrzymania odpowiedzi sieci na wektor danych wejściowych należy trzeba posłużyć się metodą predict\_single, jako argument podając jeden wektor danych wejściowych. Zwrócony zostanie wektor wyjściowy wygenerowany przez sieć.
+\end{enumerate}
+
+\pagebreak
+
+Przykładowe zastosowanie modułu MLP do rozwiązania problemu XOR:
+\begin{verbatim}
+# Inicjalizacja danych wejściowych i wyjściowych
+in = np.array(([1, 1], [1, 0], [0, 1], [0, 0]), dtype=float)
+out = np.array(([0], [1], [1], [0]), dtype=float)
+
+# Utworzenie sieci o strukturze: 2 wejścia, 3 neurony w warstwie 
+# ukrytej, 1 neuron wyjściowy. Pozostałe parametry domyślne.
+net = MLP([2, 3, 1])
+
+# Rozpoczęcie treningu dla danych problemu XOR. Dane treningowe 
+# identyczne jak dane testowe. Liczba epok 10000, gdy wartość
+# błędu spadnie poniżej 0.001, nastąpi zakończenie procesu uczenia.
+net.start_training(in, out, in, out, epochs=10000, tolerance=0.001)
+
+# Wykorzystanie nauczonej sieci do predykcji
+for x in in:
+    net.predict_single(x)
+\end{verbatim}
 
 
 
