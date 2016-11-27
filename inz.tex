@@ -108,30 +108,61 @@ Baza danych programu \textit{OnCourt} jest zapisywana z rozszerzeniem \textit{.m
 
 \section{Wykorzystane statystyki}
 \label{Sec:DataUsed}
-Poniżej przedstawiono wszystkie dane statystyczne wykorzystane w projekcie, ich oznaczenia wykorzystywane w dalszej części pracy, oraz krótkie uzasadnienie wyboru i sposób ich uzyskiwania:
+Dane statystyczne wykorzystane do predykcji wyniku muszą odpowiadać danym, którymi dysponowano przed rozegraniem meczu. 
+Przykładowo, aby dokonać predykcji zwycięzcy meczu między zawodnikiem A i zawodnikiem B odbywającym się w dniu 25.04.2013, należy pobrać stan z tego dnia przed rozegraniem meczu. W projekcie nie uwzględniono sytuacji, w której zawodnik może rozegrać więcej niż jeden mecz w ciągu jednego dnia, gdyż sytuacja taka ma miejsce niezwykle rzadko. Dane pobierane są na dzień poprzedzający rozegranie meczu. Wszystkie dane zostały znormalizowane i końcowe wartości używane w procesie przewidywania mają wartość z przedziału $\langle 0, 1\rangle$. 
+
+Poniżej przedstawiono wszystkie dane statystyczne wykorzystane w projekcie, ich oznaczenia używane w dalszej części pracy, oraz krótkie uzasadnienie wyboru i sposób ich uzyskiwania:
 \begin{enumerate}
+\item R - Ranking zawodnika.
+
+$R = \frac{Ranking\ zawodnika}{900}$
+
+W przypadku braku danych: $R = 1$
+
+Uzasadnienie: ogólna dyspozycja zawodnika w obecnym sezonie.
+
 \item WRS - Stosunek wygranych meczów do wszystkich meczów rozegranych przez zawodnika w bieżącym sezonie.
 
-Ogólna dyspozycja zawodnika w obecnym sezonie.
-
 $WRS = \frac{Wygrane\ mecze\ zawodnika\ w\ obecnym\ sezonie}{Wszystkie\ mecze\ zawodnika\ w\ obecnym\ sezonie}$
-\item WR2M - Stosunek wygranych meczów do wszystkich meczów rozegranych przez zawodnika w ciągu ostatnich dwóch miesięcy.
 
-Ogólna dyspozycja zawodnika w ciągu ostatnich dwóch miesięcy.
+W przypadku braku danych: $WRS = 0.4$
+
+Uzasadnienie: ogólna dyspozycja zawodnika w obecnym sezonie.
+
+\item WR2M - Stosunek wygranych meczów do wszystkich meczów rozegranych przez zawodnika w ciągu ostatnich dwóch miesięcy.
 
 $WR2M = \frac{Wygrane\ mecze\ zawodnika\ ostatnie\ 2\ mies.}{Wszystkie\ mecze\ zawodnika\ ostatnie\ 2\ mies.}$
 
-\item R - Ranking zawodnika.
+W przypadku braku danych: $WR2M = 0.4$
 
-Ogólna dyspozycja zawodnika w obecnym sezonie.
-
-$R = \frac{Ranking\ zawodnika}{900}$
+Uzasadnienie: dyspozycja zawodnika w ciągu ostatnich dwóch miesięcy.
 
 \item WRCT - Stosunek wygranych meczów do wszystkich meczów rozegranych przez zawodnika na korcie danego typu.
 
-tmpppp
+$WRCT = \frac{Wygrane\ mecze\ zawodnika\ na\ kortach\ danego\ typu}{Wszystkie\ mecze\ zawodnika\ na\ kortach\ danego\ typu}$
 
-$R = \frac{Ranking\ zawodnika}{900}$
+W przypadku braku danych: $WRCT = 0.4$
+
+Uzasadnienie: rodzaj nawierzchni, na której rozgrywany będzie mecz ma ogromne znaczenie w tenisie. Niektórzy zawodnicy radzą sobie zdecydowanie lepiej na jednej z nawierzchni. 
+
+\item WRTT - Stosunek wygranych meczów do wszystkich meczów rozegranych przez zawodnika w danym cyklu turniejów.
+
+$WRTT = \frac{Wygrane\ mecze\ zawodnika\ w\ danym\ cyklu\ turniejow}{Wygrane\ mecze\ zawodnika\ w\ danym\ cyklu\ turniejow}$
+
+W przypadku braku danych: $WRTT = 0.4$
+
+Uzasadnienie: zdarza się, że zawodnik notuje wyjątkowo dobre lub wyjątkowo słabe występy w konkretnym cyklu turniejów.
+
+\item H2H - Stosunek head-to-head między dwoma zawodnikami.
+
+$H2H = \frac{Wygrane\ mecze\ zawodnika\ w\ starciu\ z\ danym\ przeciwnikiem}{Wszystkie\ mecze\ zawodnika\ w\ starciu\ z\ danym\ przeciwnikiem}$
+
+W przypadku braku danych: $H2H = 0.5$
+
+H2H obliczane jest tylko dla jednego z graczy występujących w meczu. Stosunek H2H dla drugiego z graczy (H2HB) w oczywisty sposób wynika z wartości H2H i wynosi $H2HB = 1 - H2H$. Z tego powodu parametr H2HB nie jest wykorzystywany.
+
+Uzasadnienie: czasami styl gry jednego zawodnika nie odpowiada innemu zawodnikowi i jeden z nich wygrywa zdecydowaną większość spotkań.
+
 \end{enumerate}
 
 \chapter{Implementacja sieci neuronowej}
