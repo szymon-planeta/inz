@@ -96,9 +96,9 @@ Poszukując odpowiedniego zbioru danych można trafić na bazy meczów w formaci
 
 Kolejną możliwością jest skorzystanie z aplikacji desktopowej. Nie ma ich wiele, większość takich aplikacji nie jest już wspierana. Jednym z ciągle utrzymywanych programów, który wykorzystano w niniejszej pracy jest \textit{OnCourt}. Jego baza danych jest codziennie aktualizowana. Sam program umożliwia przeglądanie wielu statystyk - wszystkie mecze wybranego zawodnika, gry na danej nawierzchni czy w wybranych turniejach, obecna i historyczne pozycje w rankingu, stosunek head-to-head\footnote{Bezpośrednie konfrontacje pomiędzy dwoma wybranymi zawodnikami.} i wiele innych. Baza danych i ilość możliwości jest naprawdę ogromna, jednak wszystko to dostępne jest z poziomu graficznego interfejsu użytkownika, co znacznie utrudnia wygodne korzystanie z tego rozwiązania. Po nawiązaniu kontaktu z firmą KAN-soft, producentem oprogramowania \textit{OnCourt}, otrzymano hasło do lokalnej bazy danych pobieranej przez program, co umożliwiło wysyłanie własnych zapytań do bazy danych.
 \begin{figure}
-\caption{TMP}
-\includegraphics[width=\textwidth]{seal.jpg}
-\label{fig:seal}
+\includegraphics[width=\textwidth]{oncourt1.png}
+\caption{Program OnCourt \\ (źródło: http://www.oncourt.info/)}
+\label{fig:oncourt1}
 \end{figure}
 
 \section{Zastosowane technologie}
@@ -169,24 +169,56 @@ Uzasadnienie: czasami styl gry jednego zawodnika nie odpowiada innemu zawodnikow
 \section{Uniwersalny moduł MLP}
 \label{Sec:MLPMod}
 
+Celem było zaimplementowanie uniwersalnego modułu MLP (MultiLayer Perceptron - perceptron wielowarstwowy), którego będzie można dowolnie dostosowywać w zależności od potrzeb. Dotyczy to w szczególności architektury sieci (ilości wejść, ilości neuronów w warstwach ukrytych, ilości neuronów wyjściowych) oraz wykorzystywanych funkcji aktywacji, funkcji kosztów czy hiperparametrów (współczynnik uczenia, współczynnik momentu).
+
 \section{Zastosowane technologie}
 \label{Sec:MLPTech}
+Moduł MLP zaimplementowano wykorzystując język Python. Do wykonywania obliczeń macierzowych użyto zewnętrznej biblioteki NumPy. NumPy to pakiet wykorzystywany do wykonywania obliczeń naukowych, a w szczególności do szybkiego przetwarzania \\ N-wymiarowych tablic. Umożliwia wykonywanie obliczeń specyficznych dla macierzy oraz łatwe wykonywanie działań element po elemencie.
+
 
 \section{Struktura programu}
 \label{Sec:MLPStruct}
+Moduł MLP składa się z jednej klasy reprezentującej całą sieć neuronową - MLP. Zdecydowano o takiej konstrukcji, ponieważ wagi sieci przechowywane są w tablicach numpy.ndarray. Przejście sygnału przez sieć sprowadza się do wykonywania odpowiednich działań na macierzach. Utworzenie oddzielnej klasy odpowiadającej za Neuron i stworzenie sieci z obiektów klasy Neuron, skutkowałoby koniecznością wywoływania odpowiednich funkcji klasy Neuron dla każdego obiektu. Znacznie spowolniłoby to działanie całego programu. Diagram UML klasy MLP przedstawiono na rysunku \ref{fig:mlp01}.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{mlp01.png}
+\end{center}
+\caption{Diagram UML klasy MLP}
+\label{fig:mlp01}
+\end{figure}
 
 \section{Interfejs programisty}
 \label{Sec:MLPAPI}
+z uzytkowego punktu widzenia:
+- konstruktor - trzeba podac strukture w formie listy, reszta moze byc domyslna
+- pozostale parametry: funkcja kosztów (domyslnie blad srednipokwadratowy?), funkcja aktywacji (domyslnie logistyczna), funkcja aktywacji pochodna, wspolczynnik uczenia, wspolczynnik momentu
+
+
+
 
 \chapter{Przeprowadzone doświadczenia}
 \section{Porównanie wyników dla różnych architektur sieci}
 \label{Sec:VsArch}
 
+1 warstwa ukryta, rozne ilosci neuronow (powiedzmy 3 - bardzo malo (2-3), srednio (10-12), duzo (20-30), mega duzo(100)
+2 wartswy ukryte
+
 \section{Porównanie wyników dla różnych wektorów danych wejściowych}
 \label{Sec:VsXIn}
+rozne dane wejsciowe
+- to co teraz
+- jakies okrojone
++ laczna liczba rozegranych gemow w ciagu ostatnich kilku dni
++ ?????
+
 
 \section{Porównanie z innymi strategiami}
 \label{Sec:VsStrat}
+- losowo 50\%
+- zawsze ziomek wyzej w rankingu
+- nizszy kurs na buku (?)
+- cos jeszcze moze
 
 \chapter{Program publikujący przewidywania sieci neuronowej na portalu społecznościowym}
 
@@ -203,5 +235,8 @@ Uzasadnienie: czasami styl gry jednego zawodnika nie odpowiada innemu zawodnikow
 
 \bibliography{./bibliography}
 \bibliographystyle{plain}
+
+\listoffigures
+\listoftables
 
 \end{document}
