@@ -62,6 +62,19 @@ Powodem wyboru tematu była chęć zastosowania uczenia maszynowego w sporcie, g
 \chapter{Sieci neuronowe}
 \section{Wprowadzenie}
 \label{Sec:ThIntro}
+Prace nad sztucznymi sieciami neuronowymi rozpoczęły się w latach 40 XX wieku.\cite{osow01} Powodem rozpoczęcia prac w tej dziedzinie było rozpoznanie, że ludzki mózg wykonuje obliczenia w całkowicie inny sposób niż komputery. Potrafi on zorganizować swoją strukturę, na którą składają się neurony, w taki sposób, że pewne obliczenia (np. rozpoznawanie wzorców czy kontrola mięśni) wykonuje znacznie szybciej niż najszybsze istniejące dziś komputery. Przykładowo, rozpoznanie znajomej twarzy w nieznanym otoczeniu zajmuje mózgowi około 100-200 milisekund \cite{hayk01}, podczas gdy zadania mniej złożone zajmują komputerom znacznie więcej czasu. 
+
+Tempo rozwoju sieci neuronowych zmieniało się na przestrzeni lat, w zależności od napotykanych problemów. Dzisiaj sieci neuronowe są rozwiniętą dziedziną wiedzy, szczególnie w aspekcie teoretycznym\cite{osow01}. Ich zastosowania praktyczne możemy podzielić na kilka grup:
+\begin{itemize}
+\item Aproksymacja i interpolacja
+\item Rozpoznawanie i klasyfikacja wzorców
+\item Kompresja
+\item Predykcja
+\item Identyfikacja i sterowanie
+\item Asocjacja
+\end{itemize}
+
+Rozwój dziedziny sztucznych sieci neuronowych ciągle trwa i stale wzrasta liczba ich zastosowań. W ostatnich latach, wraz z rozwojem technologii i wzrostem dostępnej mocy obliczeniowej coraz większą popularnością zaczyna cieszyć się "uczenie głębokie" (ang. deep learning), w tym sieci konwolucyjne.
 
 \section{Neuron sigmoidalny}
 \label{Sec:ThSig}
@@ -207,7 +220,7 @@ Do stworzenia sieci o wybranej architekturze należy wykorzystać konstruktor kl
 
 \item Przeprowadzenie procesu uczenia
 
-Gdy obiekt klasy MLP jest już stworzony, można rozpocząć proces uczenia sieci. Ogranicza się to do wywołania metody start\_training. Niezbędnymi parametrami są zbiory danych: X\_train (wejściowe dane uczące), Y\_train (pożądane wyjścia odpowiadające danym podanym jako argument X\_train), X\_test (wejściowe dane testowe), Y\_test (pożądane wyjścia odpowiadające danym podanym jako argument X\_train). Opcjonalne parametry to epochs (maksymalna liczba epok\footnote{Epoka w procesie uczenia sieci neuronowych to przetworzenie całego ciągu danych uczących.}) i tolerance (gdy średni błąd spadnie poniżej tej wartości nastąpi zakończenie procesu uczenia).
+Gdy obiekt klasy MLP jest już stworzony, można rozpocząć proces uczenia sieci. Ogranicza się to do wywołania metody start\_training. Niezbędnymi parametrami są zbiory danych: X\_train (wejściowe dane uczące), Y\_train (pożądane wyjścia odpowiadające danym podanym jako argument X\_train), X\_test (wejściowe dane testowe), Y\_test (pożądane wyjścia odpowiadające danym podanym jako argument X\_train). Opcjonalne parametry to epochs (maksymalna liczba epok\footnote{Epoka w procesie uczenia sieci neuronowych to przetworzenie całego ciągu danych uczących.}) i tolerance (gdy średni błąd spadnie poniżej tej wartości nastąpi zakończenie procesu uczenia). Zastosowano typ uczenia on-line\footnote{Typ uczenia on-line: Wagi sieci uaktualniane są po każdym przetworzonym przykładzie wejściowym. }.
 
 \item Wykorzystywanie nauczonej sieci
 W celu otrzymania odpowiedzi sieci na wektor danych wejściowych należy trzeba posłużyć się metodą predict\_single, jako argument podając jeden wektor danych wejściowych. Zwrócony zostanie wektor wyjściowy wygenerowany przez sieć.
