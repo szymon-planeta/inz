@@ -66,6 +66,7 @@ Prace nad sztucznymi sieciami neuronowymi rozpoczęły się w latach 40 XX wieku
 
 Tempo rozwoju sieci neuronowych zmieniało się na przestrzeni lat, w zależności od napotykanych problemów. Dzisiaj sieci neuronowe są rozwiniętą dziedziną wiedzy, szczególnie w aspekcie teoretycznym\cite{osow01}. Ich zastosowania praktyczne możemy podzielić na kilka grup:
 \begin{itemize}
+\itemsep-0.5em
 \item Aproksymacja i interpolacja
 \item Rozpoznawanie i klasyfikacja wzorców
 \item Kompresja
@@ -76,17 +77,69 @@ Tempo rozwoju sieci neuronowych zmieniało się na przestrzeni lat, w zależnoś
 
 Rozwój dziedziny sztucznych sieci neuronowych ciągle trwa i stale wzrasta liczba ich zastosowań. W ostatnich latach, wraz z rozwojem technologii i wzrostem dostępnej mocy obliczeniowej coraz większą popularnością zaczyna cieszyć się "uczenie głębokie" (ang. deep learning), w tym sieci konwolucyjne.
 
+
 \section{Neuron sigmoidalny}
 \label{Sec:ThSig}
 
+
+Podstawowym elementem składowym sieci neuronowej jest neuron. Jego działanie wzorowane jest na działaniu neuronu biologicznego. Neuron pełni dwie funkcje:
+
+\begin{enumerate}
+\item Sumuje sygnały wejściowe ($x_1, x_2, ..., x_n$) przemnożone przez wartości wag połączeń ($w_1, w_2, ..., w_n$). W rezultacie otrzymywany jest zsumowany sygnał $u$:
+
+$$u=\sum_{i=1}^{n} w_ix_i$$
+
+\item Stosuje nieliniową funkcję aktywacji, decydującą o tym, czy neuron przekaże sygnał dalej:
+
+$$y=f(u)$$
+
+\end{enumerate}
+
+\begin{figure}
+\includegraphics[width=\textwidth]{neuron.png}
+\caption{Neuron sigmoidalny}
+\label{fig:neuron}
+\end{figure}
+
+Wykorzystana w projekcie funkcja aktywacji to funkcja sigmoidalna unipolarna, nazywana też funkcją logistyczną, którą przedstawia się wzorem: $$f(u)=\frac{1}{1+e^{-\beta u}}$$ 
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{aktywacja.png}
+\caption{Sigmoidalna funkcja unipolarna}
+\label{fig:aktywacja}
+\end{figure}
+
+Parametr $\beta$ decyduje o kształcie funkcji aktywacji, przy $\beta \rightarrow \infty$ funkcja przechodzi w funkcję skokową. W praktyce zazwyczaj przyjmowana jest wartość $\beta = 1$.\cite{osow01} Wykres funkcji dla różnych wartości parametru $\beta$ przedstawiono na rysunku \ref{fig:aktywacja}. Istotną właściwością takiej funkcji aktywacji jest jej ciągłość i różniczkowalność, ponieważ pozwala to na skorzystanie z algorytmów gradientowych w procesie uczenia.
+
+
+
 \section{Struktura wielowarstwowej sieci perceptronowej}
 \label{Sec:ThMLP}
+Wielowarstwowa sieć perceptronowa to neurony ułożone w wiele warstw. Wejściami każdego neuronu są wszystkie wyjścia z warstwy poprzedzającej, a jego wyjście jest wejściem dla wszystkich neuronów warstwy następnej. W sieci wielowarstwowej zawsze istnieje jedna warstwa wejściowa, przynajmniej jedna warstwa ukryta i jedna warstwa wyjściowa. Na rysunku \ref{fig:mlp02} przedstawiono sieć wielowarstwową o trzech wejściach w warstwie wejściowej (Input), pięciu neuronach w warstwie ukrytej (Hidden) i dwóch neuronach wyjściowych (Output).
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{mlp02.png}
+\caption{Wielowarstwowa sieć perceptronowa \\ (źródło: http://docs.opencv.org)}
+\label{fig:mlp02}
+\end{center}
+\end{figure}
+
+Proces uczenia sieci MLP opiera się na prezentacji próbek uczących, porównywaniu odpowiedzi sieci z wartością oczekiwaną, a następnie odpowiedniej korekcji wag połączeń pomiędzy neuronami. Model uczenia, w którym posiadamy oczekiwane odpowiedzi sieci wraz z danymi wejściowymi nazywany jest uczeniem nadzorowanym (ang. supervised learning). 
+
+
+
 
 \section{Propagacja wsteczna}
 \label{Sec:ThBackprop}
+Algorytm propagacji wstecznej wykorzystuje gradientowe metody optymalizacji w celu dokonywania odpowiednich modyfikacji wag sieci. Jest uważany za jeden ze skuteczniejszych algorytmów uczenia sieci wielowarstwowej.\cite{osow01} W celu zastosowania algorytmu propagacji wstecznej należy wybrać funkcję kosztu (nazywaną również funkcją celu), której wartość będzie minimalizowana. Często stosowaną funkcją celu jest suma kwadratów różnic między wartościami oczekiwanymi, a wartościami otrzymanymi na wyjściu sieci: $$ E(w)=\frac{1}{2}\sum_{i=1}^{N}(y_i-d_i)^2$$ gdzie $i$ to numer próbki, $w$ - wagi sieci, $y$ - odpowiedź otrzymana od sieci, a $d$ to oczekiwana odpowiedź. Algorytm propagacji wstecznej działa w kilku krokach. Najpierw następuje obliczenie odpowiedzi sieci na prezentowany wektor wejściowy. Aby uzyskać sygnał wyjściowy sieci, należy podać na jej wejście próbkę uczącą i obliczyć wszystkie wartości pośrednie. Następnym krokiem jest obliczenie aktualnej wartości funkcji kosztu $E(w)$. Kolejno następuje odwrócenie kierunku przepływu w sieci i minimalizacja funkcji celu za pomocą gradientowych metod optymalizacji.
+
 
 \section{Algorytm największego spadku gradientu}
 \label{Sec:ThGrad}
+Algorytm największego spadku gradientu to jedna z podstawowych i najprostszych gradientowych metod optymalizacji. Ze względu na swoją prostotę posiada wady - jest wolnozbieżny (liniowo), a w miejscach gdzie wartość gradientu jest bardzo mała (okolice punktu optymalnego), postęp jest prawie niezauważalny. Algorytm największego spadku gradientu przez wiele lat był podstawową metodą uczenia wielowarstwowych sieci neuronowych\cite{osow01}, jednak obecnie można już go uznać za algorytm historyczny, używany raczej w celach edukacyjnych.
+
+Istnieją różne wariacje tego algorytmu, które poprawiają jego działanie (zwykle w sposób heurystyczny). Jedną z takich metod jest metoda nauki z momentem (rozpędem), która oprócz aktualnej wartości gradientu uwzględnia również poprzednią zmianę wag.
 
 \chapter{Przygotowanie danych statystycznych}
 Posiadanie odpowiedniej ilości należycie przygotowanych danych to warunek niezbędny do przeprowadzenia procesu uczenia sztucznej sieci neuronowej, a w rezultacie powodzenia całego eksperymentu. Zgromadzenie i odpowiednie przetworzenie danych jest często najbardziej skomplikowaną i najbardziej czasochłonną częścią całego projektu. 
