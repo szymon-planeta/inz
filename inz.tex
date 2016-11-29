@@ -160,7 +160,8 @@ Istnieje wiele serwisów internetowych zajmujących się kolekcjonowaniem statys
 
 Poszukując odpowiedniego zbioru danych można trafić na bazy meczów w formacie CSV (ang. \textit{comma-separated values}, wartości rozdzielone przecinkiem). Są one często dystrybuowane na licencjach otwartych, pozwalających na dowolne ich wykorzystywanie. Format CSV jest atrakcyjny dla programisty, bardzo wygodny w użyciu. Niestety dane w takich bazach bywają wybrakowane lub uszkodzone. Początkowo próbowano wykorzystać jedną z takich baz\footnote{Darmowa baza danych rozpowszechniana na licencji \textit{Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License}, dostępna pod adresem: \url{https://github.com/JeffSackmann/tennis_atp}}, jednak napotkano pewne problemy. Baza nie była aktualizowana od lutego 2016 roku, a pewne dane były uszkodzone - numery identyfikacyjne graczy niekiedy się powtarzały. Uniemożliwiło to wykorzystanie jej w projekcie.
 
-Kolejną możliwością jest skorzystanie z aplikacji desktopowej. Nie ma ich wiele, większość takich aplikacji nie jest już wspierana. Jednym z ciągle utrzymywanych programów, który wykorzystano w niniejszej pracy jest \textit{OnCourt}. Jego baza danych jest codziennie aktualizowana. Sam program umożliwia przeglądanie wielu statystyk - wszystkie mecze wybranego zawodnika, gry na danej nawierzchni czy w wybranych turniejach, obecna i historyczne pozycje w rankingu, stosunek head-to-head\footnote{Bezpośrednie konfrontacje pomiędzy dwoma wybranymi zawodnikami.} i wiele innych. Baza danych i ilość możliwości jest naprawdę ogromna, jednak wszystko to dostępne jest z poziomu graficznego interfejsu użytkownika, co znacznie utrudnia wygodne korzystanie z tego rozwiązania. Po nawiązaniu kontaktu z firmą KAN-soft, producentem oprogramowania \textit{OnCourt}, otrzymano hasło do lokalnej bazy danych pobieranej przez program, co umożliwiło wysyłanie własnych zapytań do bazy danych.
+Kolejną możliwością jest skorzystanie z aplikacji desktopowej. Nie ma ich wiele, większość takich aplikacji nie jest już wspierana. Jednym z ciągle utrzymywanych programów, który wykorzystano w niniejszej pracy jest \textit{OnCourt}. Jego baza danych jest codziennie aktualizowana. Sam program umożliwia przeglądanie wielu statystyk - wszystkie mecze wybranego zawodnika, gry na danej nawierzchni czy w wybranych turniejach, obecna i historyczne pozycje w rankingu, stosunek head-to-head\footnote{Bezpośrednie konfrontacje pomiędzy dwoma wybranymi zawodnikami.} i wiele innych. Baza danych i ilość możliwości jest naprawdę ogromna, jednak wszystko to dostępne jest z poziomu graficznego interfejsu użytkownika, co znacznie utrudnia wygodne korzystanie z tego rozwiązania. Po nawiązaniu kontaktu z firmą KAN-soft, producentem oprogramowania \textit{OnCourt}, otrzymano hasło do lokalnej bazy danych pobieranej przez program, co umożliwiło wysyłanie własnych zapytań do bazy danych. 
+
 \begin{figure}
 \includegraphics[width=\textwidth]{oncourt1.png}
 \caption{Program OnCourt \\ (źródło: http://www.oncourt.info/)}
@@ -170,12 +171,12 @@ Kolejną możliwością jest skorzystanie z aplikacji desktopowej. Nie ma ich wi
 \section{Zastosowane technologie}
 \label{Sec:DataTech}
 Moduł odpowiadający za pobieranie danych z bazy, a następnie ich przetworzenie został zaimplementowany w języku Python. Python to wysokopoziomowy język skryptowy, który charakteryzuje się rozbudowanym zestawem wbudowanych bibliotek, oraz łatwością instalacji i mnogością modułów zewnętrznych.
-Baza danych programu \textit{OnCourt} jest zapisywana z rozszerzeniem \textit{.mdb} - plik bazodanowy programu Microsoft Access. Do połączenia z bazą danych wykorzystano zewnętrzny moduł \textit{pyodbc}. Moduł ten pozwala na połączenie z bazami danych ODBC\footnote{Open DataBase Connectivity - interfejs umożliwiający aplikacjom dostęp do danych w bazie}. Aby było możliwe połączenie z bazą Microsoft Access, należy posiadać zainstalowane sterowniki \textit{Microsoft Access Driver (*.mdb, *.accdb)}, które dostępne są tylko dla systemu operacyjnego Windows. Po odpowiednim podłączeniu do bazy danych można wykonywać dowolne zapytania w języku SQL, a wyniki otrzymywać i przetwarzać w swoim programie.
+Baza danych programu \textit{OnCourt} jest zapisywana z rozszerzeniem \textit{.mdb} - plik bazodanowy programu Microsoft Access. Do połączenia z bazą danych wykorzystano zewnętrzny moduł \textit{pyodbc}. Moduł ten pozwala na połączenie z bazami danych ODBC\footnote{Open DataBase Connectivity - interfejs umożliwiający aplikacjom dostęp do danych w bazie}. Aby było możliwe połączenie z bazą Microsoft Access, należy posiadać zainstalowane sterowniki \textit{Microsoft Access Driver (*.mdb, *.accdb)}, które dostępne są tylko dla systemu operacyjnego Windows. Po odpowiednim podłączeniu do bazy danych można wykonywać dowolne zapytania w języku SQL, a wyniki otrzymywać i przetwarzać w swoim programie. Początkowo napotkano pewne problemy z szybkością działania bazy danych, jednak po założeniu indeksów na odpowiednie pola nastąpiła znacząca poprawa wydajności.
 
 \section{Wykorzystane statystyki}
 \label{Sec:DataUsed}
 Dane statystyczne wykorzystane do predykcji wyniku muszą odpowiadać danym, którymi dysponowano przed rozegraniem meczu. 
-Przykładowo, aby dokonać predykcji zwycięzcy meczu między zawodnikiem A i zawodnikiem B odbywającym się w dniu 25.04.2013, należy pobrać stan z tego dnia przed rozegraniem meczu. W projekcie nie uwzględniono sytuacji, w której zawodnik może rozegrać więcej niż jeden mecz w ciągu jednego dnia, gdyż sytuacja taka ma miejsce niezwykle rzadko. Dane pobierane są na dzień poprzedzający rozegranie meczu. Wszystkie dane zostały znormalizowane i końcowe wartości używane w procesie przewidywania mają wartość z przedziału $\langle 0, 1\rangle$. 
+Przykładowo, aby dokonać predykcji zwycięzcy meczu między zawodnikiem A i zawodnikiem B odbywającym się w dniu 25.04.2013, należy pobrać stan z tego dnia przed rozegraniem meczu. W projekcie nie uwzględniono sytuacji, w której zawodnik może rozegrać więcej niż jeden mecz w ciągu jednego dnia, gdyż sytuacja taka ma miejsce niezwykle rzadko (głównie z powodu niesprzyjających warunków atmosferycznych powodujących opóźnienie w rozgrywaniu turnieju). Dane pobierane są na dzień poprzedzający rozegranie meczu. Wszystkie dane zostały znormalizowane i końcowe wartości używane w procesie przewidywania mają wartość z przedziału $\langle 0, 1\rangle$. 
 
 Poniżej przedstawiono wszystkie dane statystyczne wykorzystane w projekcie, ich oznaczenia używane w dalszej części pracy, oraz krótkie uzasadnienie wyboru i sposób ich uzyskiwania:
 \begin{enumerate}
@@ -209,7 +210,7 @@ $WRCT = \frac{Wygrane\ mecze\ zawodnika\ na\ kortach\ danego\ typu}{Wszystkie\ m
 
 W przypadku braku danych: $WRCT = 0.4$
 
-Uzasadnienie: rodzaj nawierzchni, na której rozgrywany będzie mecz ma ogromne znaczenie w tenisie. Niektórzy zawodnicy radzą sobie zdecydowanie lepiej na jednej z nawierzchni. 
+Uzasadnienie: rodzaj nawierzchni, na której rozgrywany będzie mecz ma ogromne znaczenie w tenisie. Niektórzy zawodnicy radzą sobie zdecydowanie lepiej na jednej z nawierzchni. Przykładem może być Stanislas Wawrinka, który na dzień 29.11.2016 na kortach ziemnych wygrał 69\% spośród 356 meczów, podczas gdy na kortach trawiastych jest to 54\% z jedynie 50 meczów.
 
 \item WRTT - Stosunek wygranych meczów do wszystkich meczów rozegranych przez zawodnika w danym cyklu turniejów.
 
@@ -218,6 +219,12 @@ $WRTT = \frac{Wygrane\ mecze\ zawodnika\ w\ danym\ cyklu\ turniejow}{Wygrane\ me
 W przypadku braku danych: $WRTT = 0.4$
 
 Uzasadnienie: zdarza się, że zawodnik notuje wyjątkowo dobre lub wyjątkowo słabe występy w konkretnym cyklu turniejów.
+
+\item G3D - Łączna liczba gemów rozegranych przez zawodnika w ciągu ostatnich 3 dni.
+
+$$G3D = N$$, gdzie $N$ to łączna liczba gemów rozegranych przez zawodnika w ciągu 3 dni poprzedzających przewidywany mecz.
+
+Uzasadnienie: duża liczba gemów rozegranych przez zawodnika w dniach poprzedzających mecz może decydować o jego zmęczeniu.
 
 \item H2H - Stosunek head-to-head między dwoma zawodnikami.
 
@@ -230,6 +237,24 @@ H2H obliczane jest tylko dla jednego z graczy występujących w meczu. Stosunek 
 Uzasadnienie: czasami styl gry jednego zawodnika nie odpowiada innemu zawodnikowi i jeden z nich wygrywa zdecydowaną większość spotkań.
 
 \end{enumerate}
+
+\section{Zwiększenie ilości danych}
+\label{Sec:DataDouble}
+
+W celu zwiększenia ilości posiadanych danych, oraz zmniejszenia wrażliwości sieci na kolejność podawania zawodników biorących udział w meczu, statystyki wszystkich meczów zostały zdublowane z zamienioną kolejnością zawodników. Poniżej przedstawiono przykład postępowania dla jednego meczu:
+
+Rozegrany został mecz między zawodnikiem A i zawodnikiem B. Zawodnik A wygrał. Wektor danych wejściowych mógłby wyglądać następująco\footnote{Wektor celowo został przedstawiony w trzech liniach, aby oddzielić statystyki gracza A od gracza B.}: $$[R_A, WRS_A, WR2M_A, WRCT_A, WRTT_A, G3D_A,$$
+$$H2H_A,$$  
+$$R_B, WRS_B, WR2M_B, WRCT_B, WRTT_B, G3D_B]$$
+, a odpowiadający mu wektor wyjściowy: $$[1, 0]$$
+
+Dla podanego przykładu wygenerowano odpowiadające mu wektory wejścia i wyjścia z zamienioną kolejnością zawodników:
+$$[R_B, WRS_B, WR2M_B, WRCT_B, WRTT_B, G3D_B,$$
+$$1-H2H_A,$$  
+$$R_A, WRS_A, WR2M_A, WRCT_A, WRTT_A, G3D_A]$$
+, a odpowiadający mu wektor wyjściowy: $$[0, 1]$$
+
+W wyniku tego działania całkowita ilość danych zwiększyła się dwukrotnie.
 
 \chapter{Implementacja sieci neuronowej}
 \section{Uniwersalny moduł MLP}
@@ -304,27 +329,33 @@ for x in in:
 
 
 \chapter{Przeprowadzone doświadczenia}
-\section{Porównanie wyników dla różnych architektur sieci}
-\label{Sec:VsArch}
 
-1 warstwa ukryta, rozne ilosci neuronow (powiedzmy 3 - bardzo malo (2-3), srednio (10-12), duzo (20-30), mega duzo(100)
-2 wartswy ukryte
+Wszystkie doświadczenia przeprowadzono na komputerze o procesorze Intel Core i3-3110M 2.40 GHz i 4 GB pamięci RAM. W wynikach eksperymentów załączono również czasy trwania procesów uczenia.
 
 \section{Porównanie wyników dla różnych wektorów danych wejściowych}
 \label{Sec:VsXIn}
-rozne dane wejsciowe
-- to co teraz
-- jakies okrojone
-+ laczna liczba rozegranych gemow w ciagu ostatnich kilku dni
-+ ?????
+%rozne dane wejsciowe
+%- to co teraz
+%- jakies okrojone
+%+ laczna liczba rozegranych gemow w ciagu ostatnich kilku dni
+%+ ?????
+
+\section{Porównanie wyników dla różnych architektur sieci}
+\label{Sec:VsArch}
+
+
+
+%1 warstwa ukryta, rozne ilosci neuronow (powiedzmy 3 - bardzo malo (2-3), srednio (10-12), duzo (20-30), mega duzo(100)
+%2 wartswy ukryte
+
 
 
 \section{Porównanie z innymi strategiami}
 \label{Sec:VsStrat}
-- losowo 50\%
-- zawsze ziomek wyzej w rankingu
-- nizszy kurs na buku (?)
-- cos jeszcze moze
+%- losowo 50\%
+%- zawsze ziomek wyzej w rankingu
+%- nizszy kurs na buku (?)
+%- cos jeszcze moze
 
 \chapter{Program publikujący przewidywania sieci neuronowej na portalu społecznościowym}
 
