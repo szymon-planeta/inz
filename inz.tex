@@ -187,41 +187,41 @@ W przypadku braku danych: $R = 1$
 
 Uzasadnienie: ogólna dyspozycja zawodnika w obecnym sezonie.
 
-\item WRS - Stosunek wygranych meczów do wszystkich meczów rozegranych przez zawodnika w bieżącym sezonie.
+\item WS - Stosunek wygranych meczów do wszystkich meczów rozegranych przez zawodnika w bieżącym sezonie.
 
-$WRS = \frac{Wygrane\ mecze\ zawodnika\ w\ obecnym\ sezonie}{Wszystkie\ mecze\ zawodnika\ w\ obecnym\ sezonie}$
+$WS = \frac{Wygrane\ mecze\ zawodnika\ w\ obecnym\ sezonie}{Wszystkie\ mecze\ zawodnika\ w\ obecnym\ sezonie}$
 
-W przypadku braku danych: $WRS = 0.4$
+W przypadku braku danych: $WS = 0.4$
 
 Uzasadnienie: ogólna dyspozycja zawodnika w obecnym sezonie.
 
-\item WR2M - Stosunek wygranych meczów do wszystkich meczów rozegranych przez zawodnika w ciągu ostatnich dwóch miesięcy.
+\item WM - Stosunek wygranych meczów do wszystkich meczów rozegranych przez zawodnika w ciągu ostatnich dwóch miesięcy.
 
-$WR2M = \frac{Wygrane\ mecze\ zawodnika\ ostatnie\ 2\ mies.}{Wszystkie\ mecze\ zawodnika\ ostatnie\ 2\ mies.}$
+$WM = \frac{Wygrane\ mecze\ zawodnika\ ostatnie\ 2\ mies.}{Wszystkie\ mecze\ zawodnika\ ostatnie\ 2\ mies.}$
 
-W przypadku braku danych: $WR2M = 0.4$
+W przypadku braku danych: $WM = 0.4$
 
 Uzasadnienie: dyspozycja zawodnika w ciągu ostatnich dwóch miesięcy.
 
-\item WRCT - Stosunek wygranych meczów do wszystkich meczów rozegranych przez zawodnika na korcie danego typu.
+\item WC - Stosunek wygranych meczów do wszystkich meczów rozegranych przez zawodnika na korcie danego typu.
 
-$WRCT = \frac{Wygrane\ mecze\ zawodnika\ na\ kortach\ danego\ typu}{Wszystkie\ mecze\ zawodnika\ na\ kortach\ danego\ typu}$
+$WC = \frac{Wygrane\ mecze\ zawodnika\ na\ kortach\ danego\ typu}{Wszystkie\ mecze\ zawodnika\ na\ kortach\ danego\ typu}$
 
-W przypadku braku danych: $WRCT = 0.4$
+W przypadku braku danych: $WC = 0.4$
 
 Uzasadnienie: rodzaj nawierzchni, na której rozgrywany będzie mecz ma ogromne znaczenie w tenisie. Niektórzy zawodnicy radzą sobie zdecydowanie lepiej na jednej z nawierzchni. Przykładem może być Stanislas Wawrinka, który na dzień 29.11.2016 na kortach ziemnych wygrał 69\% spośród 356 meczów, podczas gdy na kortach trawiastych jest to 54\% z jedynie 50 meczów.
 
-\item WRTT - Stosunek wygranych meczów do wszystkich meczów rozegranych przez zawodnika w danym cyklu turniejów.
+\item WT - Stosunek wygranych meczów do wszystkich meczów rozegranych przez zawodnika w danym cyklu turniejów.
 
-$WRTT = \frac{Wygrane\ mecze\ zawodnika\ w\ danym\ cyklu\ turniejow}{Wygrane\ mecze\ zawodnika\ w\ danym\ cyklu\ turniejow}$
+$WT = \frac{Wygrane\ mecze\ zawodnika\ w\ danym\ cyklu\ turniejow}{Wygrane\ mecze\ zawodnika\ w\ danym\ cyklu\ turniejow}$
 
-W przypadku braku danych: $WRTT = 0.4$
+W przypadku braku danych: $WT = 0.4$
 
 Uzasadnienie: zdarza się, że zawodnik notuje wyjątkowo dobre lub wyjątkowo słabe występy w konkretnym cyklu turniejów.
 
-\item G3D - Łączna liczba gemów rozegranych przez zawodnika w ciągu ostatnich 3 dni.
+\item GD - Łączna liczba gemów rozegranych przez zawodnika w ciągu ostatnich 3 dni.
 
-$$G3D = N$$, gdzie $N$ to łączna liczba gemów rozegranych przez zawodnika w ciągu 3 dni poprzedzających przewidywany mecz.
+$$GD = N$$, gdzie $N$ to łączna liczba gemów rozegranych przez zawodnika w ciągu 3 dni poprzedzających przewidywany mecz.
 
 Uzasadnienie: duża liczba gemów rozegranych przez zawodnika w dniach poprzedzających mecz może decydować o jego zmęczeniu.
 
@@ -242,15 +242,15 @@ Uzasadnienie: czasami styl gry jednego zawodnika nie odpowiada innemu zawodnikow
 
 W celu zwiększenia ilości posiadanych danych, oraz zmniejszenia wrażliwości sieci na kolejność podawania zawodników biorących udział w meczu, statystyki wszystkich meczów zostały zdublowane z zamienioną kolejnością zawodników. Poniżej przedstawiono przykład postępowania dla jednego meczu:
 
-Rozegrany został mecz między zawodnikiem A i zawodnikiem B. Zawodnik A wygrał. Wektor danych wejściowych mógłby wyglądać następująco\footnote{Wektor celowo został przedstawiony w trzech liniach, aby oddzielić statystyki gracza A od gracza B.}: $$[R_A, WRS_A, WR2M_A, WRCT_A, WRTT_A, G3D_A,$$
+Rozegrany został mecz między zawodnikiem A i zawodnikiem B. Zawodnik A wygrał. Wektor danych wejściowych mógłby wyglądać następująco\footnote{Wektor celowo został przedstawiony w trzech liniach, aby oddzielić statystyki gracza A od gracza B.}: $$[R_A, WS_A, WM_A, WC_A, WT_A, GD_A,$$
 $$H2H_A,$$  
-$$R_B, WRS_B, WR2M_B, WRCT_B, WRTT_B, G3D_B]$$
+$$R_B, WS_B, WM_B, WC_B, WT_B, GD_B]$$
 , a odpowiadający mu wektor wyjściowy: $$[1, 0]$$
 
 Dla podanego przykładu wygenerowano odpowiadające mu wektory wejścia i wyjścia z zamienioną kolejnością zawodników:
-$$[R_B, WRS_B, WR2M_B, WRCT_B, WRTT_B, G3D_B,$$
+$$[R_B, WS_B, WM_B, WC_B, WT_B, GD_B,$$
 $$1-H2H_A,$$  
-$$R_A, WRS_A, WR2M_A, WRCT_A, WRTT_A, G3D_A]$$
+$$R_A, WS_A, WM_A, WC_A, WT_A, GD_A]$$
 , a odpowiadający mu wektor wyjściowy: $$[0, 1]$$
 
 W wyniku tego działania całkowita ilość danych zwiększyła się dwukrotnie.
@@ -331,10 +331,24 @@ for x in in:
 
 Wszystkie doświadczenia przeprowadzono na komputerze o procesorze Intel Core i3-3110M 2.40 GHz i 4 GB pamięci RAM. W wynikach eksperymentów przedstawiono uzyskane wyniki przewidywania wraz z czasami trwania procesu uczenia dla różnych wariantów sieci i różnych wektorów uczących.
 
-Wykorzystane w procesie uczenia mecze pochodzą z największych turniejów tenisowych z lat 2002-2016. Dane treningowe i dane testowe składają się ze 150 tysięcy losowo wybranych i nie powtarzających się meczów.
+Wykorzystane w procesie uczenia mecze pochodzą z największych turniejów tenisowych z lat 2002-2016. Dane treningowe i dane testowe składają się ze 150 tysięcy losowo wybranych i niepowtarzających się meczów.
 
 \section{Porównanie wyników dla różnych wektorów danych wejściowych}
 \label{Sec:VsXIn}
+
+Pierwszym przeprowadzonym eksperymentem było podawanie różnych danych statystycznych na wejście sieci o stałej strukturze. Do tego doświadczenia wybrano model o jednej warstwie ukrytej składającej się z 10 neuronów. 
+
+Wektory danych wejściowych podawanych na wejście sieci:
+\begin{tightitemize}
+\item $X_4$: Dane bardzo ogólne, 3 parametry - ranking zawodników, procent wygranych meczów w obecnym sezonie:
+$$[R_A, WS_A, R_B, WS_B]$$
+\item $X_{8A}$: $X_{4}$ rozszerzone o procent wygranych w ciągu ostatnich dwóch miesięcy i powodzenie gracza na danym rodzaju nawierzchni:
+$$[R_A, WS_A, WM_A, WC_A, R_B, WS_B, WM_B, WC_B]$$
+\item $X_{8B}$: Dane podobne jak $X_{8A}$, jedyną różnicą jest podawanie sukcesu gracza w danym cyklu turniejów zamiast rodzaju nawierzchni:
+$$[R_A, WS_A, WM_A, WT_A, R_B, WS_B, WM_B, WT_B]$$
+\item $X_{13}$: Wektor zawierający wszystkie 13 parametrów:
+$$[R_A, WS_A, WM_A, WC_A, WT_A, GD_A,H2H_A,R_B, WS_B, WM_B, WC_B, WT_B, GD_B]$$
+\end{tightitemize}
 %rozne dane wejsciowe
 %- to co teraz
 %- jakies okrojone
@@ -356,7 +370,44 @@ Wybrane struktury sieci (w nawiasach podano stosowane oznaczenia):
 \item 2 warstwy ukryte, odpowiednio 100 i 100 neuronów ($H_{100}H_{100}$)
 \end{tightitemize}
 
+Proces uczenia przeprowadzono ze współczynnikiem uczenia wynoszącym 0.2 oraz współczynnikiem momentu równym 0.1. Ustalono ilość epok równą 15. Poniżej przedstawiono tabelę przedstawiającą skuteczności na zbiorze uczącym po każdej epoce wszystkich modeli sieci:
 
+\begin{table}[H]
+\centering
+\caption{Skuteczność sieci o różnych strukturach na zbiorze testowym}
+\label{tab:hacc}
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+\textbf{Epoka} & \textbf{$H_{1}$} & \textbf{$H_{3}$} & \textbf{$H_{10}$} & \textbf{$H_{20}$} & \textbf{$H_{100}$} & \textbf{$H_{10}H_{10}$} & \textbf{$H_{100}H_{100}$} \\ \hline
+1              & 82.97\%          & 84.87\%          & 84.38\%           & 84.79\%           & 50.02\%            & 84.01\%                 & 50.02\%                   \\ \hline
+2              & 82.97\%          & 85.06\%          & 85.10\%           & 85.31\%           & 50.02\%            & 85.00\%                 & 50.02\%                   \\ \hline
+3              & 82.97\%          & 84.99\%          & 85.36\%           & 85.55\%           & 50.02\%            & 85.34\%                 & 50.02\%                   \\ \hline
+4              & 82.97\%          & 85.04\%          & 85.52\%           & 85.66\%           & 50.02\%            & 85.47\%                 & 50.02\%                   \\ \hline
+5              & 82.97\%          & 85.27\%          & 85.68\%           & 85.74\%           & 50.02\%            & 85.45\%                 & 50.02\%                   \\ \hline
+6              & 82.97\%          & 85.33\%          & 85.81\%           & 85.83\%           & 50.02\%            & 85.60\%                 & 50.02\%                   \\ \hline
+7              & 82.97\%          & 85.39\%          & 85.89\%           & 85.89\%           & 50.02\%            & 85.78\%                 & 50.02\%                   \\ \hline
+8              & 82.97\%          & 85.43\%          & 85.96\%           & 85.98\%           & 50.02\%            & 85.90\%                 & 50.02\%                   \\ \hline
+9              & 82.97\%          & 85.44\%          & 86.00\%           & 86.05\%           & 50.02\%            & 85.99\%                 & 50.02\%                   \\ \hline
+10             & 82.97\%          & 85.47\%          & 86.04\%           & 86.11\%           & 50.02\%            & 86.07\%                 & 50.02\%                   \\ \hline
+11             & 82.97\%          & 85.49\%          & 86.10\%           & 86.17\%           & 50.02\%            & 86.10\%                 & 50.02\%                   \\ \hline
+12             & 82.97\%          & 85.50\%          & 86.12\%           & 86.22\%           & 50.02\%            & 86.13\%                 & 50.02\%                   \\ \hline
+13             & 82.97\%          & 85.51\%          & 86.16\%           & 86.28\%           & 50.02\%            & 86.20\%                 & 50.02\%                   \\ \hline
+14             & 82.97\%          & 85.51\%          & 86.23\%           & 86.28\%           & 50.02\%            & 86.25\%                 & 50.02\%                   \\ \hline
+15             & 82.97\%          & 85.52\%          & 86.27\%           & 86.28\%           & 50.02\%            & 86.29\%                 & 50.02\%                   \\ \hline
+\end{tabular}
+\end{table}
+
+Modele sieci $H_{100}$ i $H_{100}H_{100}$, które miały bardzo dużą ilość neuronów w warstwie ukrytej nie poprawiły swoich rezultatów. Zauważono, że obliczane wartości gradientu były znikome i w żaden sposób nie wpływały na zmianę wag sieci. Pozostałe struktury uzyskały bardzo zadowalające rezultaty przekraczające 82\% poprawnych predykcji. Modele $H_1$ i~$H_3$ posiadające zbyt małą liczbę neuronów osiągnęły nieco niższą, chociaż i tak zaskakująco wysoką skuteczność.
+
+Ilość danych uczących wynosząca 150 tysięcy jest wyraźnie wystarczająca w badanym problemie. Sieci największy wzrost jakości predykcji uzyskują już po pierwszej epoce, a~w~kolejnych epokach jedynie powoli przemieszczają się w okolicy minimum funkcji kosztu. Zastosowanie bardziej zaawansowanego algorytmu uczenia sieci najprawdopodobniej wpłynęłoby korzystnie na uzyskiwane rezultaty.
+
+\begin{figure}
+\includegraphics[width=\textwidth]{time_h.png}
+\caption{Czas uczenia sieci o różnych ilościach neuronów}
+\label{fig:timeh}
+\end{figure}
+
+Czas uczenia sieci rośnie wraz ze wzrostem jej struktury (Rys. \ref{fig:timeh}). Jest to szczególnie widoczne przy rozbudowywaniu sieci o kolejne warstwy ukryte, gdzie czas przeprowadzonego procesu uczenia wzrósł o około $30\%$ dla sieci $H_{10}H_{10}$ i prawie dwukrotnie dla $H_{100}H_{100}$. Obserwacja taka była oczekiwana, gdyż wraz ze wzrostem rozmiaru sieci wzrasta liczba wykonywanych operacji. Przeprowadzenie badania dla stałej ilości zostało wykonane w celu doświadczalnym. W realnej aplikacji zastosowanie innego warunku stopu dałoby inne rezultaty.
 
 \section{Porównanie z innymi strategiami}
 \label{Sec:VsStrat}
