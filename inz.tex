@@ -4,20 +4,17 @@
 \maketitle
 \tableofcontents
 
-\chapter{Streszczenie}
-
-
 \chapter{Wstęp}
 
 \section{Tenis ziemny}
 \label{Sec:Tenis}
-Tenis ziemny to jedna z najbardziej popularnych dyscyplin sportowych na świecie. Mecze rozgrywane są pojedynczo (singiel), w dwuosobowych zespołach jednej płci (debel) lub obu płci (mikst). Gra w tenisa w formie jaką mamy dzisiaj wywodzi się z Birmingham w~Anglii. Początki tego sportu datowane są na lata 60. XIX wieku. Najstarszy turniej na świecie, Wimbledon, pierwszy raz odbył się w roku 1877, a w latach 1896-1924 tenis był dyscypliną olimpijską. Na listę dyscyplin olimpijskich został ponownie wpisany w roku 1988.\cite{tenis01}
+Tenis ziemny to jedna z najbardziej popularnych dyscyplin sportowych na świecie. Mecze rozgrywane są pojedynczo (singiel), w dwuosobowych zespołach jednej płci (debel) lub obu płci (mikst). Gra w tenisa w formie jaką mamy dzisiaj wywodzi się z Birmingham w~Anglii. Początki tego sportu datowane są na lata 60. XIX wieku. Najstarszy turniej na świecie, Wimbledon, pierwszy raz odbył się w roku 1877, a w latach 1896-1924 tenis był dyscypliną olimpijską. Na listę dyscyplin olimpijskich został ponownie wpisany w roku 1988 \cite{tenis01}.
 
-W meczu tenisa może wziąć udział każdy, kto jest w stanie trzymać rakietę. Dzięki temu ilość graczy rekreacyjnych można liczyć w milionach. Tenis jest sportem widowiskowym, dlatego zmagania profesjonalistów dostarczają wielu wrażeń i gromadzą liczną widownię. Najbardziej prestiżowymi turniejami w sezonie są cztery turnieje wielkoszlemowe: Australian Open, French Open (znany również jako Roland Garros), Wimbledon oraz US Open. Kolejną rangą turniejów w tenisie męskim są turnieje z cyklu ATP World Tour: ATP World Tour Masters 1000 (cykl dziewięciu turniejów), ATP World Tour 500 i~ATP World Tour 250.\cite{tenis02}
+W meczu tenisa może wziąć udział każdy, kto jest w stanie trzymać rakietę. Dzięki temu ilość graczy rekreacyjnych można liczyć w milionach. Tenis jest sportem widowiskowym, dlatego zmagania profesjonalistów dostarczają wielu wrażeń i gromadzą liczną widownię. Najbardziej prestiżowymi turniejami w sezonie są cztery turnieje wielkoszlemowe: Australian Open, French Open (znany również jako Roland Garros), Wimbledon oraz US Open. Kolejną rangą turniejów w tenisie męskim są turnieje z cyklu ATP World Tour: ATP World Tour Masters 1000 (cykl dziewięciu turniejów), ATP World Tour 500 i~ATP World Tour 250 \cite{tenis02}.
 
 \begin{table}[H]
 \centering
-\caption{Turnieje wielkoszlemowe\cite{tenis02}}
+\caption{Turnieje wielkoszlemowe \cite{tenis02}}
 \label{Tab:Slam}
 \begin{tabular}{|l|l|l|l|}
 \hline
@@ -52,19 +49,19 @@ Istnieje wiele metod uczenia maszynowego. Każda z nich posiada swoje wady i zal
 
 \section{Cel projektu}
 \label{Sec:Goal}
-Celem projektu było stworzenie sieci neuronowej, która przewidywać będzie zwycięzcę meczu tenisa ziemnego mężczyzn (ATP World Tour) na podstawie danych statystycznych dostępnych przed meczem. Zamierzano osiągnąć możliwie najlepsze wyniki, poprzez doświadczalne określenie wpływu architektury sieci oraz rodzaju danych wejściowych na jakość osiąganych rezultatów. Predykcje najlepiej spisującego się modelu będą publikowane na portalu społecznościowym Twitter.
+Celem projektu było stworzenie sieci neuronowej (perceptronu wielowarstwowego), która przewidywać będzie zwycięzcę meczu tenisa ziemnego mężczyzn (ATP World Tour) na podstawie danych statystycznych dostępnych przed meczem. Zamierzano osiągnąć możliwie najlepsze wyniki, poprzez doświadczalne określenie wpływu architektury sieci oraz rodzaju danych wejściowych na jakość osiąganych rezultatów. Predykcje najlepiej spisującego się modelu będą publikowane na portalu społecznościowym Twitter.
 
 \section{Motywacja}
 \label{Sec:Motiv}
-Powodem wyboru tematu była chęć zastosowania uczenia maszynowego w sporcie, gdzie analiza wielkiej ilości danych statystycznych zaczyna odgrywać coraz większą rolę. Bardzo prawdopodobnym jest, że w niedalekiej przyszłości czołowi zawodnicy wielu dyscyplin sportowych polegać będą właśnie na analizie danych. Znajdowanie słabych punktów przeciwnika oraz dobór odpowiedniej taktyki w starciu z nim, wybór optymalnego planu treningowego, pomoc w podejmowaniu decyzji o transferach czy tytułowa predykcja wyników meczów to tylko kilka z możliwych zastosowań.  Powstawały już prace o podobnej tematyce, jednak takie wykorzystanie uczenia maszynowego nadal nie jest jednym ze sztandarowych zastosowań. Z punktu widzenia kibica tenisa ziemnego, predykcja wyników meczów to bardzo atrakcyjny temat, a zainteresowanie tematyką uczenia maszynowego i~chęć rozwoju w tym kierunku ostatecznie zadecydowały o wyborze tematu projektu.
+Powodem wyboru tematu była chęć zastosowania uczenia maszynowego w sporcie, gdzie analiza wielkiej ilości danych statystycznych zaczyna odgrywać coraz większą rolę. Bardzo prawdopodobnym jest, że w niedalekiej przyszłości czołowi zawodnicy wielu dyscyplin sportowych polegać będą właśnie na analizie danych. Znajdowanie słabych punktów przeciwnika oraz dobór odpowiedniej taktyki w starciu z nim, wybór optymalnego planu treningowego, pomoc w podejmowaniu decyzji o transferach czy tytułowa predykcja wyników meczów to tylko kilka z możliwych zastosowań.  Powstawały już prace o podobnej tematyce \cite{mlten01}, jednak takie wykorzystanie uczenia maszynowego nadal nie jest jednym ze sztandarowych zastosowań. Z punktu widzenia kibica tenisa ziemnego, predykcja wyników meczów to bardzo atrakcyjny temat, a zainteresowanie tematyką uczenia maszynowego i~chęć rozwoju w tym kierunku ostatecznie zadecydowały o wyborze tematu projektu.
 
 
 \chapter{Sieci neuronowe}
 \section{Wprowadzenie}
 \label{Sec:ThIntro}
-Prace nad sztucznymi sieciami neuronowymi rozpoczęły się w latach 40 XX wieku.\cite{osow01} Powodem rozpoczęcia prac w tej dziedzinie było rozpoznanie, że ludzki mózg wykonuje obliczenia w całkowicie inny sposób niż komputery. Potrafi on zorganizować swoją strukturę, na którą składają się neurony, w taki sposób, że pewne obliczenia (np. rozpoznawanie wzorców czy kontrola mięśni) wykonuje znacznie szybciej niż najszybsze istniejące dziś komputery. Przykładowo, rozpoznanie znajomej twarzy w nieznanym otoczeniu zajmuje mózgowi około 100-200 milisekund \cite{hayk01}, podczas gdy zadania mniej złożone zajmują komputerom znacznie więcej czasu. 
+Prace nad sztucznymi sieciami neuronowymi rozpoczęły się w latach 40 XX wieku \cite{osow01}. Powodem rozpoczęcia prac w tej dziedzinie było rozpoznanie, że ludzki mózg wykonuje obliczenia w całkowicie inny sposób niż komputery. Potrafi on zorganizować swoją strukturę, na którą składają się neurony, w taki sposób, że pewne obliczenia (np. rozpoznawanie wzorców czy kontrola mięśni) wykonuje znacznie szybciej niż najszybsze istniejące dziś komputery. Przykładowo, rozpoznanie znajomej twarzy w nieznanym otoczeniu zajmuje mózgowi około 100-200 milisekund \cite{hayk01}, podczas gdy zadania mniej złożone zajmują komputerom znacznie więcej czasu. 
 
-Tempo rozwoju sieci neuronowych zmieniało się na przestrzeni lat, w zależności od napotykanych problemów. Dzisiaj sieci neuronowe są rozwiniętą dziedziną wiedzy, szczególnie w aspekcie teoretycznym\cite{osow01}. Ich zastosowania praktyczne możemy podzielić na kilka grup:
+Tempo rozwoju sieci neuronowych zmieniało się na przestrzeni lat, w zależności od napotykanych problemów. Dzisiaj sieci neuronowe są rozwiniętą dziedziną wiedzy, szczególnie w aspekcie teoretycznym \cite{osow01}. Ich zastosowania praktyczne możemy podzielić na kilka grup:
 \begin{tightitemize}
 \item Aproksymacja i interpolacja
 \item Rozpoznawanie i klasyfikacja wzorców
@@ -108,7 +105,7 @@ Wykorzystana w projekcie funkcja aktywacji to funkcja sigmoidalna unipolarna, na
 \label{fig:aktywacja}
 \end{figure}
 
-Parametr $\beta$ decyduje o kształcie funkcji aktywacji, przy $\beta \rightarrow \infty$ funkcja przechodzi w funkcję skokową. W praktyce zazwyczaj przyjmowana jest wartość $\beta = 1$.\cite{osow01} Wykres funkcji dla różnych wartości parametru $\beta$ przedstawiono na rysunku \ref{fig:aktywacja}. Istotną właściwością takiej funkcji aktywacji jest jej ciągłość i różniczkowalność, ponieważ pozwala to na skorzystanie z algorytmów gradientowych w procesie uczenia.
+Parametr $\beta$ decyduje o kształcie funkcji aktywacji, przy $\beta \rightarrow \infty$ funkcja przechodzi w funkcję skokową. W praktyce zazwyczaj przyjmowana jest wartość $\beta = 1$ \cite{osow01}. Wykres funkcji dla różnych wartości parametru $\beta$ przedstawiono na rysunku \ref{fig:aktywacja}. Istotną właściwością takiej funkcji aktywacji jest jej ciągłość i różniczkowalność, ponieważ pozwala to na skorzystanie z algorytmów gradientowych w procesie uczenia.
 
 
 
@@ -131,12 +128,12 @@ Proces uczenia sieci MLP opiera się na prezentacji próbek uczących, porównyw
 
 \section{Propagacja wsteczna}
 \label{Sec:ThBackprop}
-Algorytm propagacji wstecznej wykorzystuje gradientowe metody optymalizacji w celu dokonywania odpowiednich modyfikacji wag sieci. Jest uważany za jeden ze skuteczniejszych algorytmów uczenia sieci wielowarstwowej.\cite{osow01} W celu zastosowania algorytmu propagacji wstecznej należy wybrać funkcję kosztu (nazywaną również funkcją celu), której wartość będzie minimalizowana. Często stosowaną funkcją celu jest suma kwadratów różnic między wartościami oczekiwanymi, a wartościami otrzymanymi na wyjściu sieci: $$ E(w)=\frac{1}{2}\sum_{i=1}^{N}(y_i-d_i)^2$$ gdzie $i$ to numer próbki, $w$ - wagi sieci, $y$ - odpowiedź otrzymana od sieci, a $d$ to oczekiwana odpowiedź. Algorytm propagacji wstecznej działa w kilku krokach. Najpierw następuje obliczenie odpowiedzi sieci na prezentowany wektor wejściowy. Aby uzyskać sygnał wyjściowy sieci, należy podać na jej wejście próbkę uczącą i obliczyć wszystkie wartości pośrednie. Następnym krokiem jest obliczenie aktualnej wartości funkcji kosztu $E(w)$. Kolejno następuje odwrócenie kierunku przepływu w sieci i minimalizacja funkcji celu za pomocą gradientowych metod optymalizacji.
+Algorytm propagacji wstecznej wykorzystuje gradientowe metody optymalizacji w celu dokonywania odpowiednich modyfikacji wag sieci. Jest uważany za jeden ze skuteczniejszych algorytmów uczenia sieci wielowarstwowej \cite{osow01}. W celu zastosowania algorytmu propagacji wstecznej należy wybrać funkcję kosztu (nazywaną również funkcją celu), której wartość będzie minimalizowana. Często stosowaną funkcją celu jest suma kwadratów różnic między wartościami oczekiwanymi, a wartościami otrzymanymi na wyjściu sieci: $$ E(w)=\frac{1}{2}\sum_{i=1}^{N}(y_i-d_i)^2$$ gdzie $i$ to numer próbki, $w$ - wagi sieci, $y$ - odpowiedź otrzymana od sieci, a $d$ to oczekiwana odpowiedź. Algorytm propagacji wstecznej działa w kilku krokach. Najpierw następuje obliczenie odpowiedzi sieci na prezentowany wektor wejściowy. Aby uzyskać sygnał wyjściowy sieci, należy podać na jej wejście próbkę uczącą i obliczyć wszystkie wartości pośrednie. Następnym krokiem jest obliczenie aktualnej wartości funkcji kosztu $E(w)$. Kolejno następuje odwrócenie kierunku przepływu w sieci i minimalizacja funkcji celu za pomocą gradientowych metod optymalizacji.
 
 
 \section{Algorytm największego spadku gradientu}
 \label{Sec:ThGrad}
-Algorytm największego spadku gradientu to jedna z podstawowych i najprostszych gradientowych metod optymalizacji. Ze względu na swoją prostotę posiada wady - jest wolnozbieżny (liniowo), a w miejscach gdzie wartość gradientu jest bardzo mała (okolice punktu optymalnego), postęp jest prawie niezauważalny. Algorytm największego spadku gradientu przez wiele lat był podstawową metodą uczenia wielowarstwowych sieci neuronowych\cite{osow01}, jednak obecnie można już go uznać za algorytm historyczny, używany raczej w celach edukacyjnych.
+Algorytm największego spadku gradientu to jedna z podstawowych i najprostszych gradientowych metod optymalizacji. Ze względu na swoją prostotę posiada wady - jest wolnozbieżny (liniowo), a w miejscach gdzie wartość gradientu jest bardzo mała (okolice punktu optymalnego), postęp jest prawie niezauważalny. Algorytm największego spadku gradientu przez wiele lat był podstawową metodą uczenia wielowarstwowych sieci neuronowych \cite{osow01}, jednak obecnie można już go uznać za algorytm historyczny, używany raczej w celach edukacyjnych.
 
 Istnieją różne wariacje tego algorytmu, które poprawiają jego działanie (zwykle w~sposób heurystyczny). Jedną z takich metod jest metoda nauki z momentem (rozpędem), która oprócz aktualnej wartości gradientu uwzględnia również poprzednią zmianę wag.
 
@@ -151,7 +148,7 @@ W trakcie poszukiwania i przygotowywania danych można napotkać wiele problemó
 \item Dane niskiej jakości, wybrakowane lub zniekształcone
 \end{tightitemize}
 
-Jakość danych ma znaczny wpływ na jakość wyników analizy, dlatego cały proces przygotowania danych powinien zostać przeprowadzony ze szczególną starannością. Przygotowanie danych może składać się z kilku zadań: wyboru odpowiednich danych, integracji danych pochodzących z różnych źródeł, transformacji danych do pożądanego formatu, odrzucenia nieistotnych/zniekształconych danych. Etap ten jest tak istotny, że w zadaniach analizy danych może zajmować nawet 50-70\% czasu trwania całego projektu.\cite{satt01}
+Jakość danych ma znaczny wpływ na jakość wyników analizy, dlatego cały proces przygotowania danych powinien zostać przeprowadzony ze szczególną starannością. Przygotowanie danych może składać się z kilku zadań: wyboru odpowiednich danych, integracji danych pochodzących z różnych źródeł, transformacji danych do pożądanego formatu, odrzucenia nieistotnych/zniekształconych danych. Etap ten jest tak istotny, że w zadaniach analizy danych może zajmować nawet 50-70\% czasu trwania całego projektu \cite{satt01}.
 
 \section{Baza danych}
 \label{Sec:DataBase}
@@ -447,7 +444,7 @@ Czas uczenia sieci rośnie wraz ze wzrostem jej struktury (Rys. \ref{fig:timeh})
 
 \section{Porównanie z innymi strategiami}
 \label{Sec:VsStrat}
-Wyniki modelu najlepiej radzącego sobie na danych testowych porównano z wynikami innych, prymitywnych strategii. Porównywane strategie:
+Wyniki modelu o 10 neuronach w warstwie ukrytej i 13 parametrach wektora wejściowego porównano z wynikami innych, prymitywnych strategii. Porównywane strategie:
 \begin{tightitemize}
 \item Losowo - losowy wybór zwycięzcy
 \item Ranking - wybór zawodnika plasującego się wyżej w rankingu (losowo w przypadku, gdy żaden z zawodników nie jest sklasyfikowany)
@@ -457,7 +454,7 @@ Wyniki modelu najlepiej radzącego sobie na danych testowych porównano z wynika
 
 \begin{table}[H]
 \centering
-\caption{Skuteczność przewidywania zwycięzcy dla różnych strategii}
+\caption{Skuteczność różnych strategii wyboru zwycięzcy}
 \label{tab:scores}
 \begin{tabular}{|l|l|l|l|}
 \hline
@@ -466,28 +463,66 @@ Wyniki modelu najlepiej radzącego sobie na danych testowych porównano z wynika
 \end{tabular}
 \end{table}
 
-W tabeli \ref{tab:scores} przedstawiono otrzymane rezultaty dla wszystkich strategii. Przez losowanie zwycięzcy uzyskano ok. 50\%. Jest to wynik oczekiwany - losowy wybór z dwóch możliwości. Wybór 
+W tabeli \ref{tab:scores} przedstawiono otrzymane rezultaty dla wszystkich badanych strategii. Wykorzystując model MLP uzyskano zdecydowanie lepsze rezultaty niż losowe, czy bazujące jedynie na jednym parametrze.
 
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{scores.png}
-\caption{Porównanie różnych strategii wyboru zwycięzcy}
+\caption{Skuteczność różnych strategii wyboru zwycięzcy}
 \label{fig:scores}
 \end{figure}
 
 
 
-\chapter{Program publikujący przewidywania sieci neuronowej na portalu społecznościowym}
+\chapter{Publikacja przewidywań na portalu społecznościowym}
 
 \section{Zastosowane technologie}
 \label{Sec:BotTech}
 
+Do zaimplementowania programu publikującego przewidywania sieci użyto języka Python oraz biblioteki \textit{twitter}. W celu podłączenia się do profilu na portalu Twitter poprzez bibliotekę \textit{twitter} należy wygenerować i wykorzystać odpowiednie klucze uwierzytelniające. Pozwalają one na identyfikację unikalnego użytkownika, na którego koncie publikowane będą wiadomości.
+
 \section{Predykcje przedmeczowe}
 \label{Sec:PredykcjePrzed}
+Na portalu Twitter publikowane są przewidywania zwycięzcy w nadchodzących meczach w danym dniu. Przykładowe predykcje zaprezentowano na rysunku \ref{fig:preds}. Informacje o nadchodzących meczach pobierane są bezpośrednio z bazy danych programu OnCourt. Raz dziennie wykonywany jest cykl składający się z trzech etapów:
+\begin{tightitemize}
+\item Aktualizacja bazy danych
+\item Pobranie informacji o nadchodzących meczach
+\item Predykcje wyników i ich publikacja
+\end{tightitemize}
 
-\section{Predykcje w trakcie meczu}
-\label{Sec:PredykcjeLive}
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{atp_pred.png}
+\caption{Predykcje na portalu Twitter}
+\label{fig:preds}
+\end{figure}
 
 \chapter{Podsumowanie}
+Zgodnie z założonym celem stworzono model sieci neuronowej przewidujący zwycięzcę meczu tenisa ziemnego. Uzyskany rezultat 86\% skuteczności predykcji dla zbioru testowego jest satysfakcjonującym wynikiem. Posiadanie dużej ilości danych wysokiej jakości pozwoliło na zastosowanie uczenia maszynowego do rozwiązania badanego problemu z~dobrym efektem. Predykcje wyników nadchodzących meczów publikowane są na portalu społecznościowym Twitter.
+
+Istnieje wiele zewnętrznych bibliotek pozwalających na szybkie i łatwe korzystanie z~gotowych modeli sieci neuronowych (np. PyBrain, Keras). Wykorzystywanie takich bibliotek to obecnie najpopularniejsze podejście - pozwala skupić się na rozwiązywanym problemie, kolekcjonowaniu i przygotowywaniu danych, a pominąć etap implementowania modelu. Zdecydowano jednak stworzyć moduł MLP samodzielnie w celu lepszego poznania zasad działania sieci neuronowych. Pozwoliło to zauważyć pojawiające się problemy. Moduł MLP zaimplementowano w sposób pozwalający na łatwe dostosowanie go do innych zadań. Wymagany jest jedynie dobór odpowiedniej struktury sieci oraz posiadanie stosownych zbiorów danych. Zastosowanie algorytmu najszybszego spadku gradientu dało całkiem niezłe rezultaty, jednak znanych jest wiele algorytmów które działają znacznie efektywniej. Ważnym etapem w procesie uczenia sieci była standaryzacja danych. Przed ustandaryzowaniem danych efekty działania algorytmu najszybszego spadku gradientu były bardzo słabe - postęp w procesie uczenia był niemal niezauważalny. 
+
+Największe trudności napotkano na etapie przygotowywania danych. Przed znalezieniem programu \textit{OnCourt} próbowano korzystać z innych źródeł, jednak we wszystkich przypadkach napotykano problemy związane najczęściej z niekompletnością i nieaktualnością bazy. Przetwarzanie stron WWW w celu zdobycia potrzebnych danych byłoby trudnym zadaniem i wymagałoby wielkiego nakładu pracy. Skorzystanie z bazy danych programu \textit{OnCourt} znacznie ułatwiło rozwój projektu.
+
+Przeprowadzone doświadczenia wykazały, że stworzony model radzi sobie zdecydowanie lepiej niż prymitywne strategie bazujące na pojedynczych parametrach. W wykonanych badaniach najlepsze rezultaty zostały uzyskane dla wektora zawierającego największą liczbę danych statystycznych. Wszystkie wykorzystane dane zdają się być istotne w~procesie przewidywania zwycięzcy. Dobór ilości neuronów w warstwach ukrytych odbywa się zazwyczaj eksperymentalnie. Aby osiągnąć zadowalającą jakość działania sieci neuronowej, liczba neuronów nie może być zbyt mała, jednak nie może być również zbyt duża, aby uniknąć problemu przeuczenia. W przeprowadzonych doświadczeniach zjawisko przeuczenia nie było zauważalne, a sieci o zbyt dużych ilościach neuronów w warstwach ukrytych nie poprawiły swojego działania z powodu znikomych wartości obliczanego gradientu. W efekcie w procesie uczenia nie zmieniały one swoich wag.
+
+Planowany jest dalszy rozwój projektu:
+
+\begin{tightitemize}
+\item Rozbudowa klasy MLP
+
+Aktualnie stosowany algorytm najszybszego spadku gradientu nie jest efektywnym sposobem uczenia. Zastosowany zostanie efektywniejszy algorytm uczenia (np. algorytm Levenberga-Marquardta) oraz wykorzystany adaptacyjny dobór współczynnika uczenia. Planowane jest również dodanie uczenia w trybie offline.
+
+\item Predykcje w trakcie meczu
+
+Rozszerzenie wektora wejściowego o informację o aktualnym wyniku meczu i przewidywanie zwycięzcy w trakcie meczu (np. po każdym secie). Podobnie jak z predykcjami przedmeczowymi - publikacja przewidywań na żywo na portalu Twitter.
+
+\item Większa ilość statystyk
+
+Dodanie nowych, bardziej szczegółowych statystyk do wektora wejściowego. Przykładowe parametry: procent zdobywanych punktów z pierwszego serwisu, procent wygrywanych punktów na przełamanie (ang. break point).
+
+\item Przewidywanie zwycięzcy również w meczach kobiet
+
+\end{tightitemize}
 
 \bibliography{./bibliography}
 \bibliographystyle{plain}
