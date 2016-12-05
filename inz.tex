@@ -53,7 +53,7 @@ Celem projektu było stworzenie sieci neuronowej (perceptronu wielowarstwowego),
 
 \section{Motywacja}
 \label{Sec:Motiv}
-Powodem wyboru tematu była chęć zastosowania uczenia maszynowego w sporcie, gdzie analiza wielkiej ilości danych statystycznych zaczyna odgrywać coraz większą rolę. Bardzo prawdopodobnym jest, że w niedalekiej przyszłości czołowi zawodnicy wielu dyscyplin sportowych polegać będą właśnie na analizie danych. Znajdowanie słabych punktów przeciwnika oraz dobór odpowiedniej taktyki w starciu z nim, wybór optymalnego planu treningowego, pomoc w podejmowaniu decyzji o transferach czy tytułowa predykcja wyników meczów to tylko kilka z możliwych zastosowań.  Powstawały już prace o podobnej tematyce \cite{mlten01}, jednak takie wykorzystanie uczenia maszynowego nadal nie jest jednym ze sztandarowych zastosowań. Z punktu widzenia kibica tenisa ziemnego, predykcja wyników meczów to bardzo atrakcyjny temat, a zainteresowanie tematyką uczenia maszynowego i~chęć rozwoju w tym kierunku ostatecznie zadecydowały o wyborze tematu projektu.
+Powodem wyboru tematu była chęć zastosowania uczenia maszynowego w sporcie, gdzie analiza wielkiej ilości danych statystycznych zaczyna odgrywać coraz większą rolę. Bardzo prawdopodobnym jest, że w niedalekiej przyszłości czołowi zawodnicy wielu dyscyplin sportowych polegać będą właśnie na analizie danych. Znajdowanie słabych punktów przeciwnika oraz dobór odpowiedniej taktyki w starciu z nim, wybór optymalnego planu treningowego, pomoc w podejmowaniu decyzji o transferach czy tytułowa predykcja wyników meczów to tylko kilka z możliwych zastosowań. Powstawały już prace wykorzystujące uczenie maszynowe w przewidywaniu wyników meczów tenisa ziemnego \cite{mlten01} i innych dyscyplin sportowych \cite{mlten02}, jednak takie wykorzystanie uczenia maszynowego nadal nie jest jednym ze sztandarowych zastosowań. Z punktu widzenia kibica tenisa ziemnego, predykcja wyników meczów to bardzo atrakcyjny temat, a zainteresowanie tematyką uczenia maszynowego i~chęć rozwoju w tym kierunku ostatecznie zadecydowały o wyborze tematu projektu.
 
 
 \chapter{Sieci neuronowe}
@@ -128,10 +128,10 @@ Proces uczenia sieci MLP opiera się na prezentacji próbek uczących, porównyw
 
 \section{Propagacja wsteczna}
 \label{Sec:ThBackprop}
-Algorytm propagacji wstecznej wykorzystuje gradientowe metody optymalizacji w celu dokonywania odpowiednich modyfikacji wag sieci. Jest uważany za jeden ze skuteczniejszych algorytmów uczenia sieci wielowarstwowej \cite{osow01}. W celu zastosowania algorytmu propagacji wstecznej należy wybrać funkcję kosztu (nazywaną również funkcją celu), której wartość będzie minimalizowana. Często stosowaną funkcją celu jest suma kwadratów różnic między wartościami oczekiwanymi, a wartościami otrzymanymi na wyjściu sieci: $$ E(w)=\frac{1}{2}\sum_{i=1}^{N}(y_i-d_i)^2$$ gdzie $i$ to numer próbki, $w$ - wagi sieci, $y$ - odpowiedź otrzymana od sieci, a $d$ to oczekiwana odpowiedź. Algorytm propagacji wstecznej działa w kilku krokach. Najpierw następuje obliczenie odpowiedzi sieci na prezentowany wektor wejściowy. Aby uzyskać sygnał wyjściowy sieci, należy podać na jej wejście próbkę uczącą i obliczyć wszystkie wartości pośrednie. Następnym krokiem jest obliczenie aktualnej wartości funkcji kosztu $E(w)$. Kolejno następuje odwrócenie kierunku przepływu w sieci i minimalizacja funkcji celu za pomocą gradientowych metod optymalizacji.
+Algorytm propagacji wstecznej wykorzystuje gradientowe metody optymalizacji w celu dokonywania odpowiednich modyfikacji wag sieci. Jest uważany za jeden ze skuteczniejszych algorytmów uczenia sieci wielowarstwowej \cite{osow01}. Jego wielką zaletą jest wydajność - dzięki odwróceniu kierunku wykonywane jest mnożenie macierzy z wektorami (zamiast macierzy z macierzami), co znacznie zmniejsza koszt obliczeniowy \cite{pml01}. W celu zastosowania algorytmu propagacji wstecznej należy wybrać funkcję kosztu (nazywaną również funkcją celu), której wartość będzie minimalizowana. Często stosowaną funkcją celu jest suma kwadratów różnic między wartościami oczekiwanymi, a wartościami otrzymanymi na wyjściu sieci: $$ E(w)=\frac{1}{2}\sum_{i=1}^{N}(y_i-d_i)^2,$$ gdzie $i$ to numer próbki, $w$ - wagi sieci, $y$ - odpowiedź otrzymana od sieci, a $d$ to oczekiwana odpowiedź. Algorytm propagacji wstecznej działa w kilku krokach. Najpierw następuje obliczenie odpowiedzi sieci na prezentowany wektor wejściowy. Aby uzyskać sygnał wyjściowy sieci, należy podać na jej wejście próbkę uczącą i obliczyć wszystkie wartości pośrednie. Następnym krokiem jest obliczenie aktualnej wartości funkcji kosztu $E(w)$. Kolejno następuje odwrócenie kierunku przepływu w sieci i minimalizacja funkcji celu za pomocą gradientowych metod optymalizacji.
 
 
-\section{Algorytm największego spadku gradientu}
+\section{Algorytm najszybszego spadku}
 \label{Sec:ThGrad}
 Algorytm największego spadku gradientu to jedna z podstawowych i najprostszych gradientowych metod optymalizacji. Ze względu na swoją prostotę posiada wady - jest wolnozbieżny (liniowo), a w miejscach gdzie wartość gradientu jest bardzo mała (okolice punktu optymalnego), postęp jest prawie niezauważalny. Algorytm największego spadku gradientu przez wiele lat był podstawową metodą uczenia wielowarstwowych sieci neuronowych \cite{osow01}, jednak obecnie można już go uznać za algorytm historyczny, używany raczej w celach edukacyjnych.
 
@@ -218,7 +218,7 @@ Uzasadnienie: zdarza się, że zawodnik notuje wyjątkowo dobre lub wyjątkowo s
 
 \item GD - Łączna liczba gemów rozegranych przez zawodnika w ciągu ostatnich 3 dni.
 
-$$GD = N$$, gdzie $N$ to łączna liczba gemów rozegranych przez zawodnika w ciągu 3 dni poprzedzających przewidywany mecz.
+$GD = N,$ gdzie $N$ to łączna liczba gemów rozegranych przez zawodnika w ciągu 3~dni poprzedzających przewidywany mecz.
 
 Uzasadnienie: duża liczba gemów rozegranych przez zawodnika w dniach poprzedzających mecz może decydować o jego zmęczeniu.
 
@@ -242,13 +242,13 @@ W celu zwiększenia ilości posiadanych danych, oraz zmniejszenia wrażliwości 
 Rozegrany został mecz między zawodnikiem A i zawodnikiem B. Zawodnik A wygrał. Wektor danych wejściowych mógłby wyglądać następująco\footnote{Wektor celowo został przedstawiony w trzech liniach, aby oddzielić statystyki gracza A od gracza B.}: $$[R_A, WS_A, WM_A, WC_A, WT_A, GD_A,$$
 $$H2H_A,$$  
 $$R_B, WS_B, WM_B, WC_B, WT_B, GD_B]$$
-, a odpowiadający mu wektor wyjściowy: $$[1, 0]$$
+Odpowiadający mu wektor wyjściowy: $$[1, 0]$$
 
 Dla podanego przykładu wygenerowano odpowiadające mu wektory wejścia i wyjścia z zamienioną kolejnością zawodników:
 $$[R_B, WS_B, WM_B, WC_B, WT_B, GD_B,$$
 $$1-H2H_A,$$  
 $$R_A, WS_A, WM_A, WC_A, WT_A, GD_A]$$
-, a odpowiadający mu wektor wyjściowy: $$[0, 1]$$
+Odpowiadający wektor wyjściowy: $$[0, 1]$$
 
 W wyniku tego działania całkowita ilość danych zwiększyła się dwukrotnie.
 
