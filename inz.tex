@@ -475,18 +475,22 @@ W tabeli \ref{tab:scores} przedstawiono otrzymane rezultaty dla wszystkich badan
 
 \chapter{Publikacja przewidywań na portalu społecznościowym}
 
+W dzisiejszych czasach media społecznościowe (ang. social media) mają ogromny wpływ na życie ludzi. Poświęcają oni coraz więcej czasu korzystając z portali społecznościowych, które często stanowią dla swoich użytkowników jedno z głównych źródeł informacji. Portale społecznościowe mogą być wykorzystywane również w celach marketingowych oraz do utrzymywania dobrych relacji publicznych (ang. public relations). Wiele osób wykorzystuje media społecznościowe do śledzenia interesujących je tematów i dzielenia się opiniami z~innymi użytkownikami. Mając na uwadze fanów tenisa ziemnego, zdecydowano stworzyć program publikujący przewidywania modelu sieci neuronowej na portalu Twitter (ATP Predictions @tennispub). Użytkownicy obserwując utworzony profil mogą porównywać własne przewidywania z przewidywaniami wygenerowanymi przez sieć neuronową oraz dzielić się nimi z resztą odbiorców obserwujących profil.
+
 \section{Zastosowane technologie}
 \label{Sec:BotTech}
 
-Do zaimplementowania programu publikującego przewidywania sieci użyto języka Python oraz biblioteki \textit{twitter}. W celu podłączenia się do profilu na portalu Twitter poprzez bibliotekę \textit{twitter} należy wygenerować i wykorzystać odpowiednie klucze uwierzytelniające. Pozwalają one na identyfikację unikalnego użytkownika, na którego koncie publikowane będą wiadomości.
+Do zaimplementowania programu publikującego przewidywania sieci użyto języka Python oraz biblioteki \textit{twitter}. W celu podłączenia się do profilu na portalu Twitter poprzez bibliotekę \textit{twitter} należy wygenerować i wykorzystać odpowiednie klucze uwierzytelniające - ConsumerKey, ConsumerSecret, AccessToken, AccessTokenSecret. Pozwalają one na identyfikację unikalnego użytkownika, na którego koncie publikowane będą wiadomości.
 
 \section{Predykcje przedmeczowe}
 \label{Sec:PredykcjePrzed}
-Na portalu Twitter publikowane są przewidywania zwycięzcy w nadchodzących meczach w danym dniu. Przykładowe predykcje zaprezentowano na rysunku \ref{fig:preds}. Informacje o nadchodzących meczach pobierane są bezpośrednio z bazy danych programu OnCourt. Raz dziennie wykonywany jest cykl składający się z trzech etapów:
+Na portalu Twitter publikowane są przewidywania zwycięzcy w nadchodzących meczach w danym dniu. Przykładowe predykcje zaprezentowano na rysunku \ref{fig:preds}. Informacje o nadchodzących meczach pobierane są bezpośrednio z bazy danych programu OnCourt. Raz dziennie wykonywany jest cykl składający się z przedstawionych poniżej etapów:
 \begin{tightitemize}
 \item Aktualizacja bazy danych
 \item Pobranie informacji o nadchodzących meczach
-\item Predykcje wyników i ich publikacja
+\item Przygotowanie odpowiednich wektorów wejściowych
+\item Predykcje zwycięzców na podstawie przygotowanych danych
+\item Publikacja przewidywań
 \end{tightitemize}
 
 \begin{figure}
@@ -495,6 +499,8 @@ Na portalu Twitter publikowane są przewidywania zwycięzcy w nadchodzących mec
 \caption{Predykcje na portalu Twitter}
 \label{fig:preds}
 \end{figure}
+
+Cechą charakterystyczną dla portalu Twitter jest to, że publikowane "tweety" mogą składać się maksymalnie ze 140 znaków. Z tego powodu predykcja dla każdego meczu publikowana jest w osobnej wiadomości. Każda opublikowana wiadomość zawiera datę meczu, nazwę turnieju w ramach którego mecz będzie rozegrany, imiona i nazwiska zawodników biorących udział w meczu oraz przewidywanego zwycięzcę meczu.
 
 \chapter{Podsumowanie}
 Zgodnie z założonym celem stworzono model sieci neuronowej przewidujący zwycięzcę meczu tenisa ziemnego. Uzyskany rezultat 86\% skuteczności predykcji dla zbioru testowego jest satysfakcjonującym wynikiem. Posiadanie dużej ilości danych wysokiej jakości pozwoliło na zastosowanie uczenia maszynowego do rozwiązania badanego problemu z~dobrym efektem. Predykcje wyników nadchodzących meczów publikowane są na portalu społecznościowym Twitter.
